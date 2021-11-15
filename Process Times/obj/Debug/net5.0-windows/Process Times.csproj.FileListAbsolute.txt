@@ -1,0 +1,22 @@
+H:\Projects\Repos\Process Times\Process Times\bin\Debug\net5.0-windows\Process Times.exe
+H:\Projects\Repos\Process Times\Process Times\bin\Debug\net5.0-windows\Process Times.deps.json
+H:\Projects\Repos\Process Times\Process Times\bin\Debug\net5.0-windows\Process Times.runtimeconfig.json
+H:\Projects\Repos\Process Times\Process Times\bin\Debug\net5.0-windows\Process Times.runtimeconfig.dev.json
+H:\Projects\Repos\Process Times\Process Times\bin\Debug\net5.0-windows\Process Times.dll
+H:\Projects\Repos\Process Times\Process Times\bin\Debug\net5.0-windows\ref\Process Times.dll
+H:\Projects\Repos\Process Times\Process Times\bin\Debug\net5.0-windows\Process Times.pdb
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\Process Times.csproj.AssemblyReference.cache
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\MainWindow.g.cs
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\App.g.cs
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\Process Times_MarkupCompile.cache
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\Process Times_MarkupCompile.lref
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\MainWindow.baml
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\Process Times.g.resources
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\Process Times.GeneratedMSBuildEditorConfig.editorconfig
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\Process Times.AssemblyInfoInputs.cache
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\Process Times.AssemblyInfo.cs
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\Process Times.csproj.CoreCompileInputs.cache
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\Process Times.dll
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\ref\Process Times.dll
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\Process Times.pdb
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\Process Times.genruntimeconfig.cache
