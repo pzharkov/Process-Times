@@ -20,9 +20,26 @@ namespace Process_Times
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly AppManager _app = new AppManager();
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        private void enterData(object sender, RoutedEventArgs e)
+        {                        
+            _app.EnterData(this);
+        }
+        private void viewData(object sender, RoutedEventArgs e)
+        {
+            _app.ViewData();
+        }
+
+        private void about(object sender, RoutedEventArgs e)
+        {
+            _app.About();
+        }
+
     }
 }

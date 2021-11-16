@@ -23,11 +23,11 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
-        <Button Content="Enter Data" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="1" VerticalAlignment="Center" Width="250" FontSize="24">
+        <Button Content="Enter Data" Click="enterData" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="1" VerticalAlignment="Center" Width="250" FontSize="24">
         </Button>
-        <Button Content="View Data" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="3" VerticalAlignment="Center" Width="250" FontSize="24">
+        <Button Content="View Data" Click="viewData" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="3" VerticalAlignment="Center" Width="250" FontSize="24">
         </Button>
-        <Button Content="About" Grid.Column="3" HorizontalAlignment="Center" Height="40" Grid.Row="1" VerticalAlignment="Center" Width="60" FontSize="16">
+        <Button Content="About" Click="about" Grid.Column="3" HorizontalAlignment="Center" Height="40" Grid.Row="1" VerticalAlignment="Center" Width="60" FontSize="16">
         </Button>
     </Grid>
 </Window>

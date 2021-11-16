@@ -20,3 +20,9 @@ H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\Process T
 H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\ref\Process Times.dll
 H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\Process Times.pdb
 H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\Process Times.genruntimeconfig.cache
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\AboutWindow.g.cs
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\EnterDataWindow.g.cs
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\ViewDataWindow.g.cs
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\AboutWindow.baml
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\EnterDataWindow.baml
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\ViewDataWindow.baml
