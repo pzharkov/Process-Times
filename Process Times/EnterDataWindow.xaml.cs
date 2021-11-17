@@ -28,7 +28,12 @@ namespace Process_Times
         {
             if (_appManager != null)
             {
+                System.Diagnostics.Debug.WriteLine("Close Enter Data window.");
                 _appManager.ShowMainWindow();
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Missing _appManager reference when closing Enter Data window.");
             }
         }
 

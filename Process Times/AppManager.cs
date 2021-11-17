@@ -20,7 +20,7 @@ namespace Process_Times
         {
             // open a new Enter Data window, hide main window to prevent multiple windows opened at once
             
-            // System.Diagnostics.Debug.WriteLine("Open Enter Data window.");
+            System.Diagnostics.Debug.WriteLine("Open Enter Data window.");
 
             // create and show new window
             EnterDataWindow enterDataWindow = new EnterDataWindow();
@@ -34,27 +34,49 @@ namespace Process_Times
             HideMainWindow();
         }
 
-        public void ViewData()
+        public void ViewData(MainWindow mainWindow)
         {
             // open View Data window
             System.Diagnostics.Debug.WriteLine("Open View Data window.");
 
+            // create and show new window
+            ViewDataWindow viewDataWindow = new ViewDataWindow();
+            viewDataWindow.Show();
 
+            // pass references
+            viewDataWindow.PassReferences(this);
+
+            // hide main window
+            _mainWindow = mainWindow;
+            HideMainWindow();
         }
 
-        public void About()
+        public void About(MainWindow mainWindow)
         {
             // open About window
             System.Diagnostics.Debug.WriteLine("Open About window.");
+
+            // create and show new window
+            AboutWindow aboutWindow = new AboutWindow();
+            aboutWindow.Show();
+
+            // pass references
+            aboutWindow.PassReferences(this);
+
+            // hide main window
+            _mainWindow = mainWindow;
+            HideMainWindow();
         }
 
         public void HideMainWindow()
         {
+            System.Diagnostics.Debug.WriteLine("Hide Main window.");
             _mainWindow.Hide();
         }
 
         public void ShowMainWindow()
         {
+            System.Diagnostics.Debug.WriteLine("Show Main window.");
             _mainWindow.Show();
         }
 

@@ -13,15 +13,31 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Process_Times
-{
-    /// <summary>
-    /// Interaction logic for About.xaml
-    /// </summary>
-    public partial class About : Window
+{    
+    public partial class AboutWindow : Window
     {
-        public About()
+        AppManager _appManager = null;
+        public AboutWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (_appManager != null)
+            {
+                System.Diagnostics.Debug.WriteLine("Close About window.");
+                _appManager.ShowMainWindow();
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Missing _appManager reference when closing About window.");
+            }
+        }
+
+        public void PassReferences(AppManager appManager)
+        {
+            _appManager = appManager;
         }
     }
 }

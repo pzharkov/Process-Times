@@ -14,14 +14,31 @@ using System.Windows.Shapes;
 
 namespace Process_Times
 {
-    /// <summary>
-    /// Interaction logic for ViewData.xaml
-    /// </summary>
-    public partial class ViewData : Window
+    public partial class ViewDataWindow : Window
     {
-        public ViewData()
+
+        private AppManager _appManager = null;
+        public ViewDataWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (_appManager != null)
+            {
+                System.Diagnostics.Debug.WriteLine("Close View Data window.");
+                _appManager.ShowMainWindow();
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Missing _appManager reference when closing View Data window.");
+            }
+        }
+
+        public void PassReferences(AppManager appManager)
+        {
+            _appManager = appManager;
         }
     }
 }
