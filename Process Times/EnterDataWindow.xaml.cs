@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace Process_Times
 {
@@ -28,18 +29,33 @@ namespace Process_Times
         {
             if (_appManager != null)
             {
-                System.Diagnostics.Debug.WriteLine("Close Enter Data window.");
-                _appManager.ShowMainWindow();
+                TryToClose(e);
             }
             else
             {
                 System.Diagnostics.Debug.WriteLine("Missing _appManager reference when closing Enter Data window.");
+                e.Cancel = true;
+                System.Diagnostics.Debug.WriteLine("Cancel Close Window.");
             }
         }
 
         public void PassReferences(AppManager appManager)
         {
             _appManager = appManager;
+        }
+
+        private void TryToClose(CancelEventArgs e)
+        {
+            if (!_appManager.ConfirmWindowClose(this.Title))
+            {
+                e.Cancel = true;
+                System.Diagnostics.Debug.WriteLine("Cancel Close Window.");
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Close Enter Data window.");
+                _appManager.ShowMainWindow();
+            }
         }
     }
 }

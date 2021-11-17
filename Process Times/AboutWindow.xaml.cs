@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace Process_Times
 {    
@@ -24,14 +25,16 @@ namespace Process_Times
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            
             if (_appManager != null)
             {
-                System.Diagnostics.Debug.WriteLine("Close About window.");
-                _appManager.ShowMainWindow();
+                TryToClose(e);
             }
             else
             {
                 System.Diagnostics.Debug.WriteLine("Missing _appManager reference when closing About window.");
+                e.Cancel = true;
+                System.Diagnostics.Debug.WriteLine("Cancel Close Window.");
             }
         }
 
@@ -39,5 +42,21 @@ namespace Process_Times
         {
             _appManager = appManager;
         }
+
+        private void TryToClose(CancelEventArgs e)
+        {
+            // send notification to confirm before closing
+            if (!_appManager.ConfirmWindowClose(this.Title))
+            {
+                e.Cancel = true;
+                System.Diagnostics.Debug.WriteLine("Cancel Close Window.");
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Close About window.");
+                _appManager.ShowMainWindow();
+            }
+        }
+
     }
 }

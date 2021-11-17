@@ -80,5 +80,10 @@ namespace Process_Times
             _mainWindow.Show();
         }
 
+        public bool ConfirmWindowClose(string windowName)
+        {
+            return _notifications.ConfirmCloseWindow(windowName);
+        }
+
     }
 }
