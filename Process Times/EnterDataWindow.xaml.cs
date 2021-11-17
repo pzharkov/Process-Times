@@ -14,14 +14,27 @@ using System.Windows.Shapes;
 
 namespace Process_Times
 {
-    /// <summary>
-    /// Interaction logic for EnterDataWindow.xaml
-    /// </summary>
     public partial class EnterDataWindow : Window
     {
+
+        private AppManager _appManager = null;
+
         public EnterDataWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (_appManager != null)
+            {
+                _appManager.ShowMainWindow();
+            }
+        }
+
+        public void PassReferences(AppManager appManager)
+        {
+            _appManager = appManager;
         }
     }
 }
