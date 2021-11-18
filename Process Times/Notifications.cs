@@ -22,15 +22,8 @@ namespace Process_Times
         {
             MessageBoxResult result = MessageBox.Show("Close Window?", windowName, MessageBoxButton.YesNo, MessageBoxImage.Warning);
             System.Diagnostics.Debug.WriteLine("Confirm Close Window?");
-                        
-            if (result == MessageBoxResult.No)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+
+            return result == MessageBoxResult.Yes;
         }
 
     }

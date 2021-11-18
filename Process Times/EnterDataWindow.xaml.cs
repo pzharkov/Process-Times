@@ -29,7 +29,7 @@ namespace Process_Times
         {
             if (_appManager != null)
             {
-                _appManager.ConfirmWindowClose(Title, e);
+                _appManager.ConfirmWindowClose(Title, e, false);
             }
             else
             {

@@ -41,5 +41,19 @@ namespace Process_Times
             _appManager.About(this);
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (_appManager != null)
+            {
+                _appManager.ConfirmWindowClose(Title, e, true);
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Missing _appManager reference when closing Main window.");
+                e.Cancel = true;
+
+                System.Diagnostics.Debug.WriteLine("Cancel Close Window.");
+            }
+        }
     }
 }

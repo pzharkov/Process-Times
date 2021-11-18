@@ -72,22 +72,40 @@ namespace Process_Times
 
         public void HideMainWindow()
         {
-            System.Diagnostics.Debug.WriteLine("Hide Main window.");
-            _mainWindow.Hide();
+            if (_mainWindow != null)
+            {
+                System.Diagnostics.Debug.WriteLine("Show Main window.");
+                _mainWindow.Hide();
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Main Window = null.");
+            }
         }
 
         public void ShowMainWindow()
         {
-            System.Diagnostics.Debug.WriteLine("Show Main window.");
-            _mainWindow.Show();
+            if (_mainWindow != null)
+            {
+                System.Diagnostics.Debug.WriteLine("Show Main window.");
+                _mainWindow.Show();                
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Main Window = null.");
+            }
         }
 
-        public void ConfirmWindowClose(string windowName, CancelEventArgs e)
+        public void ConfirmWindowClose(string windowName, CancelEventArgs e, bool isMainWindow)
         {
             if (_notifications.ConfirmCloseWindow(windowName))
             {
                 System.Diagnostics.Debug.WriteLine("Close " + windowName + " window.");
-                ShowMainWindow();
+                
+                if (!isMainWindow)
+                {
+                    ShowMainWindow();
+                }
             }
             else
             {
