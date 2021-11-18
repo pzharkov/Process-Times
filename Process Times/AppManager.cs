@@ -88,7 +88,7 @@ namespace Process_Times
             if (_mainWindow != null)
             {
                 System.Diagnostics.Debug.WriteLine("Show Main window.");
-                _mainWindow.Show();                
+                _mainWindow.Show();
             }
             else
             {
