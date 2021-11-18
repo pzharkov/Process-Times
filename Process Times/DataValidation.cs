@@ -11,7 +11,6 @@ namespace Process_Times
         public void ValidateManualEntry()
         {
         }
-
         public void ValidateGenerateDataSet()
         {
         }

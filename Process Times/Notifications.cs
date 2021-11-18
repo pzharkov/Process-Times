@@ -14,14 +14,10 @@ namespace Process_Times
 
         public void SuccessMessage()
         {
-
         }
-
         public void ErrorMessage()
         {
-
         }
-
         public bool ConfirmCloseWindow(string windowName)
         {
             MessageBoxResult result = MessageBox.Show("Close Window?", windowName, MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -35,7 +31,6 @@ namespace Process_Times
             {
                 return true;
             }
-
         }
 
     }

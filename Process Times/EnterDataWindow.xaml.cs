@@ -29,12 +29,13 @@ namespace Process_Times
         {
             if (_appManager != null)
             {
-                TryToClose(e);
+                _appManager.ConfirmWindowClose(Title, e);
             }
             else
             {
                 System.Diagnostics.Debug.WriteLine("Missing _appManager reference when closing Enter Data window.");
                 e.Cancel = true;
+
                 System.Diagnostics.Debug.WriteLine("Cancel Close Window.");
             }
         }
@@ -42,20 +43,6 @@ namespace Process_Times
         public void PassReferences(AppManager appManager)
         {
             _appManager = appManager;
-        }
-
-        private void TryToClose(CancelEventArgs e)
-        {
-            if (!_appManager.ConfirmWindowClose(this.Title))
-            {
-                e.Cancel = true;
-                System.Diagnostics.Debug.WriteLine("Cancel Close Window.");
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Close Enter Data window.");
-                _appManager.ShowMainWindow();
-            }
-        }
+        }        
     }
 }

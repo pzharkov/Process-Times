@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.ComponentModel;
 
 namespace Process_Times
 {
@@ -80,9 +82,19 @@ namespace Process_Times
             _mainWindow.Show();
         }
 
-        public bool ConfirmWindowClose(string windowName)
+        public void ConfirmWindowClose(string windowName, CancelEventArgs e)
         {
-            return _notifications.ConfirmCloseWindow(windowName);
+            if (_notifications.ConfirmCloseWindow(windowName))
+            {
+                System.Diagnostics.Debug.WriteLine("Close " + windowName + " window.");
+                ShowMainWindow();
+            }
+            else
+            {
+                e.Cancel = true;
+                System.Diagnostics.Debug.WriteLine("Cancel Close Window.");
+            }
+
         }
 
     }

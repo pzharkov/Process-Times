@@ -28,12 +28,13 @@ namespace Process_Times
             
             if (_appManager != null)
             {
-                TryToClose(e);
+                _appManager.ConfirmWindowClose(Title, e);
             }
             else
             {
                 System.Diagnostics.Debug.WriteLine("Missing _appManager reference when closing About window.");
                 e.Cancel = true;
+
                 System.Diagnostics.Debug.WriteLine("Cancel Close Window.");
             }
         }
@@ -42,21 +43,5 @@ namespace Process_Times
         {
             _appManager = appManager;
         }
-
-        private void TryToClose(CancelEventArgs e)
-        {
-            // send notification to confirm before closing
-            if (!_appManager.ConfirmWindowClose(this.Title))
-            {
-                e.Cancel = true;
-                System.Diagnostics.Debug.WriteLine("Cancel Close Window.");
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Close About window.");
-                _appManager.ShowMainWindow();
-            }
-        }
-
     }
 }
