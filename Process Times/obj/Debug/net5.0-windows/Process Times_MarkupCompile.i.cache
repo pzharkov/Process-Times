@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 H:\Projects\Repos\Process Times\Process Times\App.xaml
-5-604910133
+6-452463266
 
-131338022021
+14962686277
 193-1891726104
-AboutWindow.xaml;EnterDataWindow.xaml;MainWindow.xaml;ManualEntryWindow.xaml;ViewDataWindow.xaml;
+AboutWindow.xaml;EnterDataWindow.xaml;GenerateDataSetWindow.xaml;MainWindow.xaml;ManualEntryWindow.xaml;ViewDataWindow.xaml;
 
-False
+True
 

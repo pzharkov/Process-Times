@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Process_Times
 {
     /// <summary>
-    /// Interaction logic for ManualEntryWindow.xaml
+    /// Interaction logic for GenerateDataSetWindow.xaml
     /// </summary>
-    public partial class ManualEntryWindow : Window
+    public partial class GenerateDataSetWindow : Window
     {
-        public ManualEntryWindow()
+        public GenerateDataSetWindow()
         {
             InitializeComponent();
         }

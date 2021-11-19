@@ -30,6 +30,9 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="GenerateDataSetWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="ManualEntryWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
