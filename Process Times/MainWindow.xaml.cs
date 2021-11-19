@@ -27,16 +27,16 @@ namespace Process_Times
             InitializeComponent();
         }
 
-        private void enterData(object sender, RoutedEventArgs e)
+        private void EnterData(object sender, RoutedEventArgs e)
         {                        
             _appManager.EnterData(this);
         }
-        private void viewData(object sender, RoutedEventArgs e)
+        private void ViewData(object sender, RoutedEventArgs e)
         {
             _appManager.ViewData(this);
         }
 
-        private void about(object sender, RoutedEventArgs e)
+        private void About(object sender, RoutedEventArgs e)
         {
             _appManager.About(this);
         }

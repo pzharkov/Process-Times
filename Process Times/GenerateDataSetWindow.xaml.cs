@@ -19,6 +19,8 @@ namespace Process_Times
     /// </summary>
     public partial class GenerateDataSetWindow : Window
     {
+        private AppManager _appManager = null;
+
         public GenerateDataSetWindow()
         {
             InitializeComponent();
@@ -27,6 +29,11 @@ namespace Process_Times
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        public void PassReferences(AppManager appManager)
+        {
+            _appManager = appManager;
         }
     }
 }

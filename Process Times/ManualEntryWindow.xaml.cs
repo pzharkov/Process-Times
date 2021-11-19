@@ -20,6 +20,7 @@ namespace Process_Times
     /// </summary>
     public partial class ManualEntryWindow : Window
     {
+        private AppManager _appManager = null;
         public ManualEntryWindow()
         {
             InitializeComponent();
@@ -28,6 +29,11 @@ namespace Process_Times
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        public void PassReferences(AppManager appManager)
+        {
+            _appManager = appManager;
         }
     }
 }

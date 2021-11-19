@@ -43,6 +43,20 @@ namespace Process_Times
         public void PassReferences(AppManager appManager)
         {
             _appManager = appManager;
-        }        
+        }
+
+        private void ManualEntryClick(object sender, RoutedEventArgs e)
+        {
+            _appManager.ManualEntry();
+        }
+        private void GenerateDataSetClick(object sender, RoutedEventArgs e)
+        {
+            _appManager.GenerateDataSet();
+        }
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
