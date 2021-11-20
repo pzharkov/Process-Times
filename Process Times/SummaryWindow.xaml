@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Process_Times"
         mc:Ignorable="d"
-        Title="SummaryWindow" Height="450" Width="800">
+        Title="SummaryWindow" Height="450" Width="400">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Button Content="MAIN WINDOW" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="70" Grid.Row="6" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="BACK" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="70" Grid.Row="8" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <DataGrid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="4">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Shift" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Count" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Average" Width="1*"></DataGridTextColumn>                
+            </DataGrid.Columns>            
+        </DataGrid>
     </Grid>
 </Window>

@@ -86,7 +86,7 @@ namespace Process_Times
 
             // create and show new window
             SummaryWindow summaryWindow = new SummaryWindow();
-            summaryWindow.ShowDialog();            
+            summaryWindow.ShowDialog();
 
             // pass reference to this app manager
             summaryWindow.PassReferences(this);
