@@ -5,9 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Process_Times"
         mc:Ignorable="d"
-        Title="ViewData" Height="450" Width="800"
+        Title="EnterDataWindow" Height="450" Width="400"
         Closing="Window_Closing">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Button Content="SUMMARY" Click="SummaryClick" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="1" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="ALL DATA" Click="AllDataClick" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="3" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="BACK" Click="Back" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="5" VerticalAlignment="Center" Width="250" FontSize="24"/>
     </Grid>
 </Window>

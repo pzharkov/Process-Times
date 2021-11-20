@@ -30,3 +30,7 @@ H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\ManualEnt
 H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\ManualEntryWindow.baml
 H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\GenerateDataSetWindow.g.cs
 H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\GenerateDataSetWindow.baml
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\AllDataWindow.g.cs
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\SummaryWindow.g.cs
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\AllDataWindow.baml
+H:\Projects\Repos\Process Times\Process Times\obj\Debug\net5.0-windows\SummaryWindow.baml

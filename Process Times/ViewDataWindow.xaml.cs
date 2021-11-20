@@ -42,6 +42,19 @@ namespace Process_Times
         public void PassReferences(AppManager appManager)
         {
             _appManager = appManager;
-        }        
+        }
+
+        private void SummaryClick(object sender, RoutedEventArgs e)
+        {
+            _appManager.Summary();
+        }
+        private void AllDataClick(object sender, RoutedEventArgs e)
+        {
+            _appManager.AllData();
+        }
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

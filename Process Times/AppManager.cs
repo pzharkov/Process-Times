@@ -37,7 +37,7 @@ namespace Process_Times
         }
 
         public void ManualEntry()
-        {            
+        {
             System.Diagnostics.Debug.WriteLine("Open Manual Entry window.");
 
             // create and show new window
@@ -60,10 +60,9 @@ namespace Process_Times
             generateDataSetWindow.PassReferences(this);
         }
 
-
-
         #endregion
 
+        #region View Data and Sub-Windows Functions
         public void ViewData(MainWindow mainWindow)
         {
             // open View Data window
@@ -80,6 +79,32 @@ namespace Process_Times
             _mainWindow = mainWindow;
             HideMainWindow();
         }
+
+        public void Summary()
+        {
+            System.Diagnostics.Debug.WriteLine("Open Summary window.");
+
+            // create and show new window
+            SummaryWindow summaryWindow = new SummaryWindow();
+            summaryWindow.ShowDialog();            
+
+            // pass reference to this app manager
+            summaryWindow.PassReferences(this);
+        }
+
+        public void AllData()
+        {
+            System.Diagnostics.Debug.WriteLine("Open All Data window.");
+
+            // create and show new window
+            AllDataWindow allDataWindow = new AllDataWindow();
+            allDataWindow.ShowDialog();
+
+            // pass reference to this app manager
+            allDataWindow.PassReferences(this);
+        }
+        #endregion
+
 
         public void About(MainWindow mainWindow)
         {

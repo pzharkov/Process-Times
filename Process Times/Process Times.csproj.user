@@ -10,10 +10,16 @@
     <Compile Update="AboutWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="AllDataWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="EnterDataWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="ManualEntryWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SummaryWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="ViewDataWindow.xaml.cs">
@@ -22,6 +28,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="AboutWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AllDataWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="EnterDataWindow.xaml">
@@ -34,6 +43,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ManualEntryWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SummaryWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ViewDataWindow.xaml">
