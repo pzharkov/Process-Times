@@ -28,7 +28,7 @@ namespace Process_Times
             
             if (_appManager != null)
             {
-                _appManager.ConfirmWindowClose(Title, e, false);
+                _appManager.ShowMainWindow();
             }
             else
             {
@@ -42,6 +42,20 @@ namespace Process_Times
         public void PassReferences(AppManager appManager)
         {
             _appManager = appManager;
+        }
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            if (_appManager != null)
+            {
+                this.Close();
+                _appManager.ShowMainWindow();
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Missing _appManager reference when closing About window.");                
+            }
+
         }
     }
 }
