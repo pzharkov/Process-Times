@@ -27,8 +27,8 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Button Content="SUBMIT" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="9" VerticalAlignment="Center" Width="250" FontSize="24"/>
-        <Button Content="CANCEL" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="11" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="SUBMIT" Click="SubmitClick" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="9" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="CANCEL" Click="CancelClick" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="11" VerticalAlignment="Center" Width="250" FontSize="24"/>
         <TextBox Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="40" TextWrapping="Wrap" VerticalAlignment="Center" Width="240" Grid.Row="1" FontSize="16"/>
         <ListBox Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="40" Grid.Row="5" VerticalAlignment="Center" Width="240" SelectionChanged="ListBox_SelectionChanged" FontSize="16"/>
         <Label Content="ENTER PROCESS TIME" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Height="23" Grid.Row="3" VerticalAlignment="Center" Width="256" FontSize="12"/>

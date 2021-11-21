@@ -56,7 +56,8 @@ namespace Process_Times
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            _appManager.ShowMainWindow();
+            this.Close();            
         }
     }
 }

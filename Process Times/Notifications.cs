@@ -18,6 +18,16 @@ namespace Process_Times
         public void ErrorMessage()
         {
         }
+
+        public bool ConfirmCancel(String windowName)
+        {
+            MessageBoxResult result = MessageBox.Show("Confirm cancel? Any entered information will be lost.", windowName, MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            System.Diagnostics.Debug.WriteLine("Confirm Cancel?");
+
+            return result == MessageBoxResult.Yes;
+
+        }
+
         public bool ConfirmCloseWindow(string windowName)
         {
             MessageBoxResult result = MessageBox.Show("Close Window?", windowName, MessageBoxButton.YesNo, MessageBoxImage.Warning);

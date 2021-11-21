@@ -40,24 +40,26 @@ namespace Process_Times
         {
             System.Diagnostics.Debug.WriteLine("Open Manual Entry window.");
 
-            // create and show new window
+            // create, pass reference to appmanager and show dialog
             ManualEntryWindow manualEntryWindow = new ManualEntryWindow();
-            manualEntryWindow.ShowDialog();
-
-            // pass reference to this app manager
             manualEntryWindow.PassReferences(this);
+            manualEntryWindow.ShowDialog();
         }
 
         public void GenerateDataSet()
         {
             System.Diagnostics.Debug.WriteLine("Open Generate Data Set window.");
 
-            // create and show new window
+            // create, pass reference to appmanager and show dialog
             GenerateDataSetWindow generateDataSetWindow = new GenerateDataSetWindow();
-            generateDataSetWindow.ShowDialog();
-
-            // pass reference to this app manager
             generateDataSetWindow.PassReferences(this);
+            generateDataSetWindow.ShowDialog();            
+        }
+
+        public void SubmitManualEntry(ManualEntryWindow manualEntryWindow, String processTime, String shift)
+        {
+            System.Diagnostics.Debug.WriteLine("Submit Manual Entry. Process time: " + processTime + ". Shift: " + shift + ".");
+            manualEntryWindow.Close();
         }
 
         #endregion
@@ -111,17 +113,17 @@ namespace Process_Times
             // open About window
             System.Diagnostics.Debug.WriteLine("Open About window.");
 
-            // create and show new window
+            // create, pass reference to app manager and show new window
             AboutWindow aboutWindow = new AboutWindow();
-            aboutWindow.Show();
-
-            // pass references
             aboutWindow.PassReferences(this);
+            aboutWindow.Show();            
 
             // hide main window
             _mainWindow = mainWindow;
             HideMainWindow();
         }
+
+
 
         public void HideMainWindow()
         {
@@ -149,6 +151,20 @@ namespace Process_Times
             }
         }
 
+        public void ConfirmCancel(string windowName, ManualEntryWindow manualEntryWindow, GenerateDataSetWindow generateDataSetWindow)
+        {
+            if (_notifications.ConfirmCancel(windowName))
+            {
+                if (manualEntryWindow != null)
+                {
+                    manualEntryWindow.Close();
+                }
+                if (generateDataSetWindow != null)
+                {
+                    generateDataSetWindow.Close();
+                }
+            }
+        }
         public void ConfirmWindowClose(string windowName, CancelEventArgs e, bool isMainWindow)
         {
             if (_notifications.ConfirmCloseWindow(windowName))

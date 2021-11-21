@@ -33,7 +33,16 @@ namespace Process_Times
 
         public void PassReferences(AppManager appManager)
         {
-            _appManager = appManager;
+            _appManager = appManager;        
+        }
+
+        private void SubmitClick(object sender, RoutedEventArgs e)
+        {
+            _appManager.SubmitManualEntry(this,"Test", "Test");
+        }
+        private void CancelClick(object sender, RoutedEventArgs e)
+        {
+            _appManager.ConfirmCancel(Title, this, null);
         }
     }
 }
