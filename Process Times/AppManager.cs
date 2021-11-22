@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.ComponentModel;
+using System.Windows.Controls;
 
 namespace Process_Times
 {
@@ -53,13 +54,24 @@ namespace Process_Times
             // create, pass reference to appmanager and show dialog
             GenerateDataSetWindow generateDataSetWindow = new GenerateDataSetWindow();
             generateDataSetWindow.PassReferences(this);
-            generateDataSetWindow.ShowDialog();            
+            generateDataSetWindow.ShowDialog();
         }
 
-        public void SubmitManualEntry(ManualEntryWindow manualEntryWindow, String processTime, String shift)
+        public void SubmitManualEntry(ManualEntryWindow manualEntryWindow, String processTime, String shift, Label _processTimeLabel, Label _shiftLabel)
         {
-            System.Diagnostics.Debug.WriteLine("Submit Manual Entry. Process time: " + processTime + ". Shift: " + shift + ".");
-            manualEntryWindow.Close();
+            if (_dataValidation.ValidProcessTime(processTime))
+            {
+                System.Diagnostics.Debug.WriteLine("Valid Process Time: " + processTime);
+                manualEntryWindow.Close();
+            }
+            else
+            {
+                _processTimeLabel.Content = "Only use positive numbers: 0-9 and '.'";
+                _processTimeLabel.Foreground = System.Windows.Media.Brushes.Red;
+                System.Diagnostics.Debug.WriteLine("Invalid Process Time. Only use positive numbers and .");
+            }
+
+            
         }
 
         #endregion

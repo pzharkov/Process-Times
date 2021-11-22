@@ -38,7 +38,7 @@ namespace Process_Times
 
         private void SubmitClick(object sender, RoutedEventArgs e)
         {
-            _appManager.SubmitManualEntry(this,"Test", "Test");
+            _appManager.SubmitManualEntry(this, ProcessTimeTxtBox.Text, "Test", ProcessTimeLabel, ShiftLabel);
         }
         private void CancelClick(object sender, RoutedEventArgs e)
         {
