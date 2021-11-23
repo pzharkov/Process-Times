@@ -47,17 +47,7 @@ namespace Process_Times
             manualEntryWindow.ShowDialog();
         }
 
-        public void GenerateDataSet()
-        {
-            System.Diagnostics.Debug.WriteLine("Open Generate Data Set window.");
-
-            // create, pass reference to appmanager and show dialog
-            GenerateDataSetWindow generateDataSetWindow = new GenerateDataSetWindow();
-            generateDataSetWindow.PassReferences(this);
-            generateDataSetWindow.ShowDialog();
-        }
-
-        public void SubmitManualEntry(ManualEntryWindow manualEntryWindow, String processTime, String product, Label processTimeLabel, Label productLabel)
+        public void SubmitManualEntry(ManualEntryWindow manualEntryWindow, string processTime, string product, Label processTimeLabel, Label productLabel)
         {
             bool _processTimeIsValid = false;
             bool _productIsValid = false;
@@ -66,7 +56,7 @@ namespace Process_Times
             if (_dataValidation.ValidProcessTimeEntered(processTime))
             {
                 System.Diagnostics.Debug.WriteLine("Valid Process Time: " + processTime);
-                _processTimeIsValid = true;                
+                _processTimeIsValid = true;
             }
             else
             {
@@ -96,6 +86,43 @@ namespace Process_Times
                 // update UI
                 manualEntryWindow.Close();
             }
+        }
+
+        public void GenerateDataSet()
+        {
+            System.Diagnostics.Debug.WriteLine("Open Generate Data Set window.");
+
+            // create, pass reference to appmanager and show dialog
+            GenerateDataSetWindow generateDataSetWindow = new GenerateDataSetWindow();
+            generateDataSetWindow.PassReferences(this);
+            generateDataSetWindow.ShowDialog();
+        }
+
+        public void SubmitGenerateDataSet(GenerateDataSetWindow generateDataSetWindow, ValidEntry numberOfEntries, ValidRange rangeA, ValidRange rangeB)
+        {
+            bool _numberOfEntriesIsValid = false;
+            bool _rangeAISValid = false;
+            bool _rangeBIsValid = false;
+
+            if (_dataValidation.ValidNumberOfEntries(numberOfEntries.entry))
+            {
+                System.Diagnostics.Debug.WriteLine("Valid Number of Entries: " + numberOfEntries);
+                _numberOfEntriesIsValid = true;
+            }
+            else
+            {
+                numberOfEntries.label.Content = "Only use positive integers.";
+                numberOfEntries.label.Foreground = System.Windows.Media.Brushes.Red;
+                System.Diagnostics.Debug.WriteLine("Invalid Number of Entries. Only use positive integers");
+            }
+
+            // validate range A
+
+            // validate range B
+
+            // determine next step
+
+
         }
 
         #endregion

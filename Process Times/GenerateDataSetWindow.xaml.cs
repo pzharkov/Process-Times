@@ -25,15 +25,24 @@ namespace Process_Times
         {
             InitializeComponent();
         }
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
+        
         public void PassReferences(AppManager appManager)
         {
             _appManager = appManager;
+        }
+
+        private void SubmitClick(object sender, RoutedEventArgs e)
+        {
+            // create constructs
+            ValidEntry numberOfEntries = new ValidEntry(NumberOfEntriesTextBox.Text, NumberOfEntriesLabel);
+            ValidRange rangeA = new ValidRange(MinATextBox.Text, MaxATextBox.Text, MinALabel, MaxALabel);
+            ValidRange rangeB = new ValidRange(MinBTextBox.Text, MaxBTextBox.Text, MinBLabel, MaxBLabel);
+
+            _appManager.SubmitGenerateDataSet(this, numberOfEntries, rangeA, rangeB);
+        }
+        private void CancelClick(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

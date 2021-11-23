@@ -21,6 +21,7 @@ namespace Process_Times
     public partial class ManualEntryWindow : Window
     {
         private AppManager _appManager = null;
+        string _product = null;
         public ManualEntryWindow()
         {
             InitializeComponent();
@@ -38,7 +39,7 @@ namespace Process_Times
 
         private void SubmitClick(object sender, RoutedEventArgs e)
         {
-            string _product = null;
+            _product = null;
 
             if (ProductListBox.SelectedItem != null)
 
@@ -50,7 +51,15 @@ namespace Process_Times
         }
         private void CancelClick(object sender, RoutedEventArgs e)
         {
-            _appManager.ConfirmCancel(Title, this, null);
+            if (ProductListBox.SelectedItem == null && ProcessTimeTxtBox.Text == "")
+            {
+                Close();
+            }
+            else
+            {
+                _appManager.ConfirmCancel(Title, this, null);
+            }
+            
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Process_Times"
         mc:Ignorable="d"
-        Title="Generate Data Set Window" Height="450" Width="400">
+        Title="Generate Data Set Window" Height="650" Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="67*"/>
@@ -22,21 +22,25 @@
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Button Content="SUBMIT" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="9" VerticalAlignment="Center" Width="250" FontSize="24" Grid.ColumnSpan="3"/>
-        <Button Content="CANCEL" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="11" VerticalAlignment="Center" Width="250" FontSize="24" Grid.ColumnSpan="3"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Center" Height="40" TextWrapping="Wrap" VerticalAlignment="Center" Width="240" Grid.Row="1" Grid.ColumnSpan="3" FontSize="16"/>
-        <TextBox Grid.Column="1" VerticalContentAlignment="CENTER" HorizontalContentAlignment="CENTER" HorizontalAlignment="Center" Height="40" TextWrapping="Wrap" VerticalAlignment="Center" Width="92" Grid.Row="5" FontSize="16"/>
-        <TextBox Grid.Column="3" VerticalContentAlignment="CENTER" HorizontalContentAlignment="CENTER" HorizontalAlignment="Center" Height="40" TextWrapping="Wrap" VerticalAlignment="Center" Width="92" Grid.Row="5" FontSize="16"/>
-        <Label Content="NUMBER OF ENTRIES" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Height="23" Grid.Row="3" VerticalAlignment="Center" Width="258" FontSize="12" Grid.ColumnSpan="3"/>
-        <Label Content="MIN" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Height="23" Grid.Row="7" VerticalAlignment="Center" Width="100" FontSize="12"/>
-        <Label Content="MAX" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="3" HorizontalAlignment="Center" Height="23" Grid.Row="7" VerticalAlignment="Center" Width="100" FontSize="12"/>
+        <Button Content="SUBMIT" Click="SubmitClick" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="9" VerticalAlignment="Center" Width="250" FontSize="24" Grid.ColumnSpan="3"/>
+        <Button Content="CANCEL" Click="CancelClick" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="11" VerticalAlignment="Center" Width="250" FontSize="24" Grid.ColumnSpan="3"/>
+        <TextBox Name="NumberOfEntriesTextBox" Grid.Column="1" HorizontalAlignment="Center" Height="40" TextWrapping="Wrap" VerticalAlignment="Center" Width="240" Grid.Row="1" Grid.ColumnSpan="3" FontSize="16"/>
+        <TextBox Name="MinATextBox" Grid.Column="1" VerticalContentAlignment="CENTER" HorizontalContentAlignment="CENTER" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Grid.Row="5" FontSize="16" Margin="10,5,0,0"/>
+        <TextBox Name="MaxATextBox" Grid.Column="3" VerticalContentAlignment="CENTER" HorizontalContentAlignment="CENTER" HorizontalAlignment="Center" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Grid.Row="5" FontSize="16" Margin="0,5,0,0"/>
+        <Label Name="NumberOfEntriesLabel" Content="NUMBER OF ENTRIES" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Height="23" Grid.Row="3" VerticalAlignment="Center" Width="258" FontSize="12" Grid.ColumnSpan="3"/>
+        <Label Name="MinALabel" Content="MIN" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Height="23" Grid.Row="5" VerticalAlignment="Top" Width="100" FontSize="12" Margin="0,50,0,0"/>
+        <Label Name="MaxALabel" Content="MAX" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="3" HorizontalAlignment="Left" Height="23" Grid.Row="5" VerticalAlignment="Top" Width="100" FontSize="12" Margin="18,50,0,0"/>
+        <TextBox Name="MinBTextBox" Grid.Column="1" VerticalContentAlignment="CENTER" HorizontalContentAlignment="CENTER" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Grid.Row="7" FontSize="16" Margin="10,11,0,0"/>
+        <TextBox Name="MaxBTextBox" Grid.Column="3" VerticalContentAlignment="CENTER" HorizontalContentAlignment="CENTER" HorizontalAlignment="Center" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Grid.Row="7" FontSize="16" Margin="0,11,0,0"/>
+        <Label Name="MinBLabel" Content="MIN" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Height="23" Grid.Row="7" VerticalAlignment="Top" Width="100" FontSize="12" Margin="0,56,0,0"/>
+        <Label Name="MaxBLabel" Content="MAX" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="3" HorizontalAlignment="Left" Height="23" Grid.Row="7" VerticalAlignment="Top" Width="100" FontSize="12" Margin="18,56,0,0"/>
 
     </Grid>
 </Window>
