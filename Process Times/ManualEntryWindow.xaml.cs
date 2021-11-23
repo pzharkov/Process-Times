@@ -38,7 +38,15 @@ namespace Process_Times
 
         private void SubmitClick(object sender, RoutedEventArgs e)
         {
-            _appManager.SubmitManualEntry(this, ProcessTimeTxtBox.Text, "Test", ProcessTimeLabel, ShiftLabel);
+            string _product = null;
+
+            if (ProductListBox.SelectedItem != null)
+
+            {
+                _product = ProductListBox.SelectedItem.ToString();
+            }
+
+            _appManager.SubmitManualEntry(this, ProcessTimeTxtBox.Text, _product, ProcessTimeLabel, ProductLabel);
         }
         private void CancelClick(object sender, RoutedEventArgs e)
         {

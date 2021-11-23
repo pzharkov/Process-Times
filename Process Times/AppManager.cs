@@ -57,21 +57,45 @@ namespace Process_Times
             generateDataSetWindow.ShowDialog();
         }
 
-        public void SubmitManualEntry(ManualEntryWindow manualEntryWindow, String processTime, String shift, Label _processTimeLabel, Label _shiftLabel)
+        public void SubmitManualEntry(ManualEntryWindow manualEntryWindow, String processTime, String product, Label processTimeLabel, Label productLabel)
         {
-            if (_dataValidation.ValidProcessTime(processTime))
+            bool _processTimeIsValid = false;
+            bool _productIsValid = false;
+
+            // validate process time
+            if (_dataValidation.ValidProcessTimeEntered(processTime))
             {
                 System.Diagnostics.Debug.WriteLine("Valid Process Time: " + processTime);
-                manualEntryWindow.Close();
+                _processTimeIsValid = true;                
             }
             else
             {
-                _processTimeLabel.Content = "Only use positive numbers: 0-9 and '.'";
-                _processTimeLabel.Foreground = System.Windows.Media.Brushes.Red;
+                processTimeLabel.Content = "Only use positive numbers: 0-9 and '.'";
+                processTimeLabel.Foreground = System.Windows.Media.Brushes.Red;
                 System.Diagnostics.Debug.WriteLine("Invalid Process Time. Only use positive numbers and .");
             }
 
-            
+            // validate product selection
+            if (_dataValidation.ValidProductSelected(product))
+            {
+                System.Diagnostics.Debug.WriteLine("Valid Product: " + product);
+                _productIsValid = true;
+            }
+            else
+            {
+                productLabel.Content = "SELECTION REQUIRED";
+                productLabel.Foreground = System.Windows.Media.Brushes.Red;
+                System.Diagnostics.Debug.WriteLine("Missing Product Selection.");
+            }
+
+            // determine next step
+            if (_processTimeIsValid && _productIsValid)
+            {
+                // update DB
+
+                // update UI
+                manualEntryWindow.Close();
+            }
         }
 
         #endregion
