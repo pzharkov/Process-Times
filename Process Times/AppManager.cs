@@ -19,7 +19,7 @@ namespace Process_Times
 
         private MainWindow _mainWindow = null;
 
-        #region Enter Data and Sub-Windows Functions
+        #region Enter Data and Sub-Windows Functions       
         public void EnterData(MainWindow mainWindow)
         {
             // open a new Enter Data window, hide main window to prevent multiple windows opened at once
@@ -36,7 +36,7 @@ namespace Process_Times
             _mainWindow = mainWindow;
             HideMainWindow();
         }
-
+                
         public void ManualEntry()
         {
             System.Diagnostics.Debug.WriteLine("Open Manual Entry window.");
@@ -100,26 +100,16 @@ namespace Process_Times
 
         public void SubmitGenerateDataSet(GenerateDataSetWindow generateDataSetWindow, ValidEntry numberOfEntries, ValidRange rangeA, ValidRange rangeB)
         {
-            bool _numberOfEntriesIsValid = false;
-            bool _rangeAISValid = false;
-            bool _rangeBIsValid = false;
+            // validate
+            IsValidInt(numberOfEntries);
+            IsValidRange(rangeA);
+            IsValidRange(rangeB);
 
-            if (_dataValidation.ValidNumberOfEntries(numberOfEntries.entry))
+            if (IsValidInt(numberOfEntries) && IsValidRange(rangeA) && IsValidRange(rangeB))
             {
-                System.Diagnostics.Debug.WriteLine("Valid Number of Entries: " + numberOfEntries);
-                _numberOfEntriesIsValid = true;
+                System.Diagnostics.Debug.WriteLine("Valid Entries. Proceed.");
             }
-            else
-            {
-                numberOfEntries.label.Content = "Only use positive integers.";
-                numberOfEntries.label.Foreground = System.Windows.Media.Brushes.Red;
-                System.Diagnostics.Debug.WriteLine("Invalid Number of Entries. Only use positive integers");
-            }
-
-            // validate range A
-
-            // validate range B
-
+            
             // determine next step
 
 
@@ -245,6 +235,66 @@ namespace Process_Times
                 System.Diagnostics.Debug.WriteLine("Cancel Close Window.");
             }
 
+        }
+
+        private bool IsValidInt(ValidEntry entry)
+        {
+            bool _isValid = false;
+
+            if (_dataValidation.IsValidInt(entry.entry))
+            {
+                System.Diagnostics.Debug.WriteLine("Valid Number of Entries: " + entry);
+
+                entry.label.Foreground = System.Windows.Media.Brushes.Black;
+                entry.label.Content = "NUMBER OF ENTRIES";
+
+                _isValid = true;
+            }
+            else
+            {
+                InvalidEntry(entry.label, "Only use positive integers.");
+                _isValid = false;
+            }
+
+            return _isValid;
+        }
+        private bool IsValidRange(ValidRange range)
+        {
+            bool _isValid = false;
+
+            if (_dataValidation.IsValidDouble(range.min) && _dataValidation.IsValidDouble(range.max))
+            {
+                if (double.Parse(range.min) > double.Parse(range.max))
+                {
+                    InvalidEntry(range.minLabel, "Ensure the minimum value is smaller than the maximum and vice versa.");
+                }
+                else
+                {
+                    range.minLabel.Content = "MIN";
+                    range.minLabel.Foreground = System.Windows.Media.Brushes.Black;
+                    range.maxLabel.Content = "MAX";
+                    range.maxLabel.Foreground = System.Windows.Media.Brushes.Black;
+
+                    _isValid = true;
+                }
+            }
+            if (!_dataValidation.IsValidDouble(range.min))
+            {
+                InvalidEntry(range.minLabel, "Only use positive decimal numbers.");
+            }
+            if (!_dataValidation.IsValidDouble(range.max))
+            {
+                InvalidEntry(range.maxLabel, "Only use positive decimal numbers.");
+            }            
+
+            return _isValid;
+
+        }
+        private void InvalidEntry(Label label, string details)
+        {
+            label.Content = "Invalid entry: " + details;
+            label.Foreground = System.Windows.Media.Brushes.Red;
+            System.Diagnostics.Debug.WriteLine("Invalid entry: " + details);
         }
     }
 }

@@ -16,6 +16,9 @@ namespace Process_Times
 
         private int _numberOfEntries;
 
+        private int _validInt;
+        private double _validDouble;
+
         #region Manual Entry Validation
         public bool ValidProcessTimeEntered(string processTime)
         {
@@ -44,7 +47,7 @@ namespace Process_Times
 
         #region Generate Data Set Validation
 
-        public bool ValidNumberOfEntries(string numberOfEntries)
+        public bool IsValidNumberOfEntries(string numberOfEntries)
         {
             // try to parse as int and see if positive
             if (Int32.TryParse(numberOfEntries, out _numberOfEntries) && Int32.Parse(numberOfEntries) > 0)
@@ -57,7 +60,31 @@ namespace Process_Times
             }
         }
 
+        public bool IsValidInt(string validInt)
+        {
+            // try to parse as int32 and see if positive
+            if (Int32.TryParse(validInt, out _validInt) && Int32.Parse(validInt) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
+        public bool IsValidDouble(string validDouble)
+        {
+            // try to parse as double and see if positive number
+            if (double.TryParse(validDouble, out _validDouble) && double.Parse(validDouble) > 0f)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         #endregion
     }
 }

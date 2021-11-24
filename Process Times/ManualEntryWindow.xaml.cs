@@ -21,10 +21,14 @@ namespace Process_Times
     public partial class ManualEntryWindow : Window
     {
         private AppManager _appManager = null;
-        string _product = null;
+        private string _product = null;
+        private bool _isBeingCanceled = false;
+
         public ManualEntryWindow()
         {
             InitializeComponent();
+
+            _isBeingCanceled = false;
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -61,5 +65,6 @@ namespace Process_Times
             }
             
         }
+        
     }
 }
