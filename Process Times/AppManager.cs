@@ -36,7 +36,7 @@ namespace Process_Times
             _mainWindow = mainWindow;
             HideMainWindow();
         }
-                
+        
         public void ManualEntry()
         {
             System.Diagnostics.Debug.WriteLine("Open Manual Entry window.");
@@ -47,39 +47,18 @@ namespace Process_Times
             manualEntryWindow.ShowDialog();
         }
 
-        public void SubmitManualEntry(ManualEntryWindow manualEntryWindow, string processTime, string product, Label processTimeLabel, Label productLabel)
+        public void SubmitManualEntry(ManualEntryWindow manualEntryWindow, ValidEntry processTime, ValidEntry productSelected)
         {
-            bool _processTimeIsValid = false;
-            bool _productIsValid = false;
+            bool _validProcessTime = false;
+            bool _validProductSelected = false;
 
             // validate process time
-            if (_dataValidation.ValidProcessTimeEntered(processTime))
-            {
-                System.Diagnostics.Debug.WriteLine("Valid Process Time: " + processTime);
-                _processTimeIsValid = true;
-            }
-            else
-            {
-                processTimeLabel.Content = "Only use positive numbers: 0-9 and '.'";
-                processTimeLabel.Foreground = System.Windows.Media.Brushes.Red;
-                System.Diagnostics.Debug.WriteLine("Invalid Process Time. Only use positive numbers and .");
-            }
 
-            // validate product selection
-            if (_dataValidation.ValidProductSelected(product))
-            {
-                System.Diagnostics.Debug.WriteLine("Valid Product: " + product);
-                _productIsValid = true;
-            }
-            else
-            {
-                productLabel.Content = "SELECTION REQUIRED";
-                productLabel.Foreground = System.Windows.Media.Brushes.Red;
-                System.Diagnostics.Debug.WriteLine("Missing Product Selection.");
-            }
+            _validProcessTime = IsValidDouble(processTime, "ENTER PROCESS TIME", "Only use positive decimal numbers.");
+            _validProductSelected = IsNotNull(productSelected, "SELECT PRODUCT", "Missing selection.");
 
             // determine next step
-            if (_processTimeIsValid && _productIsValid)
+            if (_validProcessTime && _validProductSelected)
             {
                 // update DB
 
@@ -101,15 +80,14 @@ namespace Process_Times
         public void SubmitGenerateDataSet(GenerateDataSetWindow generateDataSetWindow, ValidEntry numberOfEntries, ValidRange rangeA, ValidRange rangeB)
         {
             // validate
-            IsValidInt(numberOfEntries);
-            IsValidRange(rangeA);
-            IsValidRange(rangeB);
+            bool _validNumberOfEntries = IsValidInt(numberOfEntries, "NUMBER OF ENTRIES", "Only use positive integers.");
+            bool _validRangeA = IsValidRange(rangeA);
+            bool _validRangeB = IsValidRange(rangeB);
 
-            if (IsValidInt(numberOfEntries) && IsValidRange(rangeA) && IsValidRange(rangeB))
+            if (_validNumberOfEntries && _validRangeA && _validRangeB)
             {
                 System.Diagnostics.Debug.WriteLine("Valid Entries. Proceed.");
             }
-            
             // determine next step
 
 
@@ -176,8 +154,6 @@ namespace Process_Times
             HideMainWindow();
         }
 
-
-
         public void HideMainWindow()
         {
             if (_mainWindow != null)
@@ -190,7 +166,6 @@ namespace Process_Times
                 System.Diagnostics.Debug.WriteLine("Main Window = null.");
             }
         }
-
         public void ShowMainWindow()
         {
             if (_mainWindow != null)
@@ -203,7 +178,6 @@ namespace Process_Times
                 System.Diagnostics.Debug.WriteLine("Main Window = null.");
             }
         }
-
         public void ConfirmCancel(string windowName, ManualEntryWindow manualEntryWindow, GenerateDataSetWindow generateDataSetWindow)
         {
             if (_notifications.ConfirmCancel(windowName))
@@ -237,26 +211,43 @@ namespace Process_Times
 
         }
 
-        private bool IsValidInt(ValidEntry entry)
+        #region Validation
+        private bool IsValidInt(ValidEntry entry, string validMessage, string invalidMessage)
         {
             bool _isValid = false;
 
             if (_dataValidation.IsValidInt(entry.entry))
             {
-                System.Diagnostics.Debug.WriteLine("Valid Number of Entries: " + entry);
-
                 entry.label.Foreground = System.Windows.Media.Brushes.Black;
-                entry.label.Content = "NUMBER OF ENTRIES";
+                entry.label.Content = validMessage;
 
                 _isValid = true;
             }
             else
             {
-                InvalidEntry(entry.label, "Only use positive integers.");
+                InvalidEntry(entry.label, invalidMessage);
                 _isValid = false;
             }
 
             return _isValid;
+        }
+        private bool IsValidDouble(ValidEntry entry, string validMessage, string invalidMessage)
+        {
+            bool _isValid = false;
+
+            if (_dataValidation.IsValidDouble(entry.entry))
+            {
+                entry.label.Foreground = System.Windows.Media.Brushes.Black;
+                entry.label.Content = validMessage;
+            }
+            else
+            {
+                InvalidEntry(entry.label, invalidMessage);
+                _isValid = false;
+            }
+
+            return _isValid;
+        
         }
         private bool IsValidRange(ValidRange range)
         {
@@ -290,11 +281,30 @@ namespace Process_Times
             return _isValid;
 
         }
+        private bool IsNotNull(ValidEntry entry, string validMessage, string invalidMessage)
+        {
+            bool _isValid = false;
+            if (entry.entry != null)
+            {
+                entry.label.Foreground = System.Windows.Media.Brushes.Black;
+                entry.label.Content = validMessage;
+
+                _isValid = true;
+            }
+            else
+            {
+                InvalidEntry(entry.label, invalidMessage);
+                _isValid = false;
+            }
+
+            return _isValid;
+        }        
         private void InvalidEntry(Label label, string details)
         {
             label.Content = "Invalid entry: " + details;
             label.Foreground = System.Windows.Media.Brushes.Red;
             System.Diagnostics.Debug.WriteLine("Invalid entry: " + details);
         }
+        #endregion
     }
 }

@@ -22,13 +22,11 @@ namespace Process_Times
     {
         private AppManager _appManager = null;
         private string _product = null;
-        private bool _isBeingCanceled = false;
+        
 
         public ManualEntryWindow()
         {
             InitializeComponent();
-
-            _isBeingCanceled = false;
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -46,12 +44,14 @@ namespace Process_Times
             _product = null;
 
             if (ProductListBox.SelectedItem != null)
-
             {
                 _product = ProductListBox.SelectedItem.ToString();
             }
 
-            _appManager.SubmitManualEntry(this, ProcessTimeTxtBox.Text, _product, ProcessTimeLabel, ProductLabel);
+            ValidEntry processTime = new ValidEntry(ProcessTimeTxtBox.Text, ProcessTimeLabel);
+            ValidEntry productSelected = new ValidEntry(_product, ProductLabel);
+
+            _appManager.SubmitManualEntry(this, processTime, productSelected);
         }
         private void CancelClick(object sender, RoutedEventArgs e)
         {
