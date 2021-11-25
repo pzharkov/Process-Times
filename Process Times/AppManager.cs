@@ -37,13 +37,14 @@ namespace Process_Times
             HideMainWindow();
         }
         
-        public void ManualEntry()
+        public void ManualEntry(EnterDataWindow owner)
         {
             System.Diagnostics.Debug.WriteLine("Open Manual Entry window.");
 
             // create, pass reference to appmanager and show dialog
             ManualEntryWindow manualEntryWindow = new ManualEntryWindow();
             manualEntryWindow.PassReferences(this);
+            manualEntryWindow.Owner = owner;
             manualEntryWindow.ShowDialog();
         }
 
@@ -67,14 +68,16 @@ namespace Process_Times
             }
         }
 
-        public void GenerateDataSet()
+        public void GenerateDataSet(EnterDataWindow owner)
         {
             System.Diagnostics.Debug.WriteLine("Open Generate Data Set window.");
 
             // create, pass reference to appmanager and show dialog
             GenerateDataSetWindow generateDataSetWindow = new GenerateDataSetWindow();
             generateDataSetWindow.PassReferences(this);
+            generateDataSetWindow.Owner = owner;
             generateDataSetWindow.ShowDialog();
+            
         }
 
         public void SubmitGenerateDataSet(GenerateDataSetWindow generateDataSetWindow, ValidEntry numberOfEntries, ValidRange rangeA, ValidRange rangeB)
@@ -113,28 +116,28 @@ namespace Process_Times
             HideMainWindow();
         }
 
-        public void Summary()
+        public void Summary(ViewDataWindow owner)
         {
             System.Diagnostics.Debug.WriteLine("Open Summary window.");
 
             // create and show new window
             SummaryWindow summaryWindow = new SummaryWindow();
-            summaryWindow.ShowDialog();
-
-            // pass reference to this app manager
+            
             summaryWindow.PassReferences(this);
+            summaryWindow.Owner = owner;
+            summaryWindow.ShowDialog();            
         }
 
-        public void AllData()
+        public void AllData(ViewDataWindow owner)
         {
             System.Diagnostics.Debug.WriteLine("Open All Data window.");
 
             // create and show new window
             AllDataWindow allDataWindow = new AllDataWindow();
-            allDataWindow.ShowDialog();
 
-            // pass reference to this app manager
             allDataWindow.PassReferences(this);
+            allDataWindow.Owner = owner;
+            allDataWindow.ShowDialog();
         }
         #endregion
 

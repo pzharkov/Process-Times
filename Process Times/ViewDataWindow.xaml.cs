@@ -46,11 +46,11 @@ namespace Process_Times
 
         private void SummaryClick(object sender, RoutedEventArgs e)
         {
-            _appManager.Summary();
+            _appManager.Summary(this);
         }
         private void AllDataClick(object sender, RoutedEventArgs e)
         {
-            _appManager.AllData();
+            _appManager.AllData(this);
         }
         private void Back(object sender, RoutedEventArgs e)
         {

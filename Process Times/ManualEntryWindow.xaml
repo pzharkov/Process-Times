@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Process_Times"
         mc:Ignorable="d"
-        Title="ManualEntryWindow" Height="450" Width="400">
+        Title="ManualEntryWindow" Height="450" Width="400"
+        WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>

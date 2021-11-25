@@ -47,11 +47,11 @@ namespace Process_Times
 
         private void ManualEntryClick(object sender, RoutedEventArgs e)
         {
-            _appManager.ManualEntry();
+            _appManager.ManualEntry(this);
         }
         private void GenerateDataSetClick(object sender, RoutedEventArgs e)
         {
-            _appManager.GenerateDataSet();
+            _appManager.GenerateDataSet(this);
         }
 
         private void Back(object sender, RoutedEventArgs e)
