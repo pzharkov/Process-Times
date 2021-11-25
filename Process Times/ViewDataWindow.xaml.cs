@@ -22,22 +22,7 @@ namespace Process_Times
         public ViewDataWindow()
         {
             InitializeComponent();
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (_appManager != null)
-            {
-                _appManager.ConfirmWindowClose(Title, e, false);
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Missing _appManager reference when closing View Data window.");
-                e.Cancel = true;
-
-                System.Diagnostics.Debug.WriteLine("Cancel Close Window.");
-            }
-        }
+        }        
 
         public void PassReferences(AppManager appManager)
         {
@@ -55,6 +40,11 @@ namespace Process_Times
         private void Back(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            _appManager.ShowMainWindow();
         }
     }
 }
