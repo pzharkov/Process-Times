@@ -123,7 +123,7 @@ namespace Process_Times
             // create and show new window
             SummaryWindow summaryWindow = new SummaryWindow();
             
-            summaryWindow.PassReferences(this);
+            summaryWindow.PassReferences(this, owner);
             summaryWindow.Owner = owner;
             summaryWindow.ShowDialog();            
         }
@@ -135,7 +135,7 @@ namespace Process_Times
             // create and show new window
             AllDataWindow allDataWindow = new AllDataWindow();
 
-            allDataWindow.PassReferences(this);
+            allDataWindow.PassReferences(this, owner);
             allDataWindow.Owner = owner;
             allDataWindow.ShowDialog();
         }

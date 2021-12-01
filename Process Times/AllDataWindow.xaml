@@ -26,8 +26,8 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Button Content="MAIN WINDOW" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="6" VerticalAlignment="Center" Width="250" FontSize="24"/>
-        <Button Content="BACK" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="8" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="MAIN WINDOW" Click="MainWindowClick" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="6" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="BACK" Click="BackClick" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="8" VerticalAlignment="Center" Width="250" FontSize="24"/>
         <DataGrid Grid.Column="2" Grid.Row="1" Grid.RowSpan="8" Margin="10,10,10,10">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Order Nmber" Width="1*"></DataGridTextColumn>
