@@ -1,4 +1,4 @@
-﻿<Window x:Class="Process_Times.EnterDataWindow"
+﻿<local:WindowBase x:Class="Process_Times.EnterDataWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -26,4 +26,4 @@
         <Button Content="GENERATE DATA SET" Click="GenerateDataSetClick" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="3" VerticalAlignment="Center" Width="250" FontSize="24"/>
         <Button Content="BACK" Click="Back" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="5" VerticalAlignment="Center" Width="250" FontSize="24"/>
     </Grid>
-</Window>
+</local:WindowBase>

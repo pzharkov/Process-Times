@@ -15,9 +15,8 @@ using System.ComponentModel;
 
 namespace Process_Times
 {    
-    public partial class AboutWindow : Window
-    {
-        AppManager _appManager = null;
+    public partial class AboutWindow : WindowBase
+    {   
         public AboutWindow()
         {
             InitializeComponent();
@@ -26,9 +25,9 @@ namespace Process_Times
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             
-            if (_appManager != null)
+            if (appManager != null)
             {
-                _appManager.ShowMainWindow();
+                appManager.ShowMainWindow();
             }
             else
             {
@@ -41,15 +40,15 @@ namespace Process_Times
 
         public void PassReferences(AppManager appManager)
         {
-            _appManager = appManager;
+            appManager = appManager;
         }
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            if (_appManager != null)
+            if (appManager != null)
             {
                 this.Close();
-                _appManager.ShowMainWindow();
+                appManager.ShowMainWindow();
             }
             else
             {

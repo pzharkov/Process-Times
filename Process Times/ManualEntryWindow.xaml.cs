@@ -18,9 +18,8 @@ namespace Process_Times
     /// <summary>
     /// Interaction logic for ManualEntryWindow.xaml
     /// </summary>
-    public partial class ManualEntryWindow : Window
+    public partial class ManualEntryWindow : WindowBase
     {
-        private AppManager _appManager = null;
         private string _product = null;
         
 
@@ -32,11 +31,6 @@ namespace Process_Times
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-        }
-
-        public void PassReferences(AppManager appManager)
-        {
-            _appManager = appManager;        
         }
 
         private void SubmitClick(object sender, RoutedEventArgs e)
@@ -51,7 +45,7 @@ namespace Process_Times
             ValidEntry processTime = new ValidEntry(ProcessTimeTxtBox.Text, ProcessTimeLabel);
             ValidEntry productSelected = new ValidEntry(_product, ProductLabel);
 
-            _appManager.SubmitManualEntry(this, processTime, productSelected);
+            appManager.SubmitManualEntry(this, processTime, productSelected);
         }
         private void CancelClick(object sender, RoutedEventArgs e)
         {
@@ -61,7 +55,7 @@ namespace Process_Times
             }
             else
             {
-                _appManager.ConfirmCancel(Title, this, null);
+                appManager.ConfirmCancel(this);
             }
             
         }

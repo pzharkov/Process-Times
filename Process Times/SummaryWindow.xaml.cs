@@ -17,33 +17,24 @@ namespace Process_Times
     /// <summary>
     /// Interaction logic for SummaryWindow.xaml
     /// </summary>
-    public partial class SummaryWindow : Window
+    public partial class SummaryWindow : WindowBase
     {
-        private AppManager _appManager = null;
-        private ViewDataWindow _owner = null;
-
         public SummaryWindow()
         {
             InitializeComponent();
         }
-
-        public void PassReferences(AppManager appManager, ViewDataWindow owner)
-        {
-            _appManager = appManager;
-            _owner = owner;
-        }
-
+        
         private void MainWindowClick(object sender, RoutedEventArgs e)
         {
-            _owner.Close();
-            _appManager.ShowMainWindow();
+            parentWindow.Close();
+            appManager.ShowMainWindow();
 
             Close();
         }
 
         private void BackClick(object sender, RoutedEventArgs e)
         {
-            Close();
+            CloseWindow(true);
         }
     }
 }

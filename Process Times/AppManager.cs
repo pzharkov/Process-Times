@@ -39,13 +39,8 @@ namespace Process_Times
         
         public void ManualEntry(EnterDataWindow owner)
         {
-            System.Diagnostics.Debug.WriteLine("Open Manual Entry window.");
-
-            // create, pass reference to appmanager and show dialog
-            ManualEntryWindow manualEntryWindow = new ManualEntryWindow();
-            manualEntryWindow.PassReferences(this);
-            manualEntryWindow.Owner = owner;
-            manualEntryWindow.ShowDialog();
+            EnterDataWindow _newWindow = new();
+            OpenNewWindow(_newWindow, _newWindow);
         }
 
         public void SubmitManualEntry(ManualEntryWindow manualEntryWindow, ValidEntry processTime, ValidEntry productSelected)
@@ -75,7 +70,7 @@ namespace Process_Times
             // create, pass reference to appmanager and show dialog
             GenerateDataSetWindow generateDataSetWindow = new GenerateDataSetWindow();
             generateDataSetWindow.PassReferences(this);
-            generateDataSetWindow.Owner = owner;
+            generateDataSetWindow.parentWindow = owner;
             generateDataSetWindow.ShowDialog();
             
         }
@@ -98,34 +93,35 @@ namespace Process_Times
 
         #endregion
 
-        #region View Data and Sub-Windows Functions
-        public void ViewData(MainWindow mainWindow)
+        public void TestOpenNewWindow()
         {
-            // open View Data window
-            System.Diagnostics.Debug.WriteLine("Open View Data window.");
+            MainWindow _newWindow = new();
+            OpenNewWindow(_newWindow, _newWindow);
+        }
+        private void OpenNewWindow(WindowBase newWindow, WindowBase owner)
+        {
+            System.Diagnostics.Debug.WriteLine("Open" + newWindow.Title + ".");
 
-            // create and show new window
-            ViewDataWindow viewDataWindow = new ViewDataWindow();
-            viewDataWindow.Show();
+            newWindow.PassReference(this, owner);
+            newWindow.Show();
+            owner.Hide();
+        }
 
-            // pass references
-            viewDataWindow.PassReferences(this);
-
+        #region View Data and Sub-Windows Functions
+        public void ViewData(WindowBase owner)
+        {
+            ViewDataWindow newWindow = new();
+            OpenNewWindow(newWindow, owner);
+            
             // hide main window
-            _mainWindow = mainWindow;
+            _mainWindow = (MainWindow)owner;
             HideMainWindow();
         }
 
-        public void Summary(ViewDataWindow owner)
+        public void Summary(WindowBase owner)
         {
-            System.Diagnostics.Debug.WriteLine("Open Summary window.");
-
-            // create and show new window
-            SummaryWindow summaryWindow = new SummaryWindow();
-             
-            summaryWindow.PassReferences(this, owner);
-            summaryWindow.Owner = owner;
-            summaryWindow.ShowDialog();
+            SummaryWindow newWindow = new();
+            OpenNewWindow(newWindow, owner);
         }
 
         public void AllData(ViewDataWindow owner)
@@ -136,7 +132,7 @@ namespace Process_Times
             AllDataWindow allDataWindow = new AllDataWindow();
 
             allDataWindow.PassReferences(this, owner);
-            allDataWindow.Owner = owner;
+            allDataWindow.parentWindow = owner;
             allDataWindow.ShowDialog();
         }
         #endregion
@@ -150,7 +146,7 @@ namespace Process_Times
             // create, pass reference to app manager and show new window
             AboutWindow aboutWindow = new AboutWindow();
             aboutWindow.PassReferences(this);
-            aboutWindow.Show();            
+            aboutWindow.Show();
 
             // hide main window
             _mainWindow = mainWindow;
@@ -175,7 +171,7 @@ namespace Process_Times
         {
             if (_mainWindow != null)
             {
-                System.Diagnostics.Debug.WriteLine("Show Main window.");
+                System.Diagnostics.Debug.WriteLine("Hide Main window.");
                 _mainWindow.Hide();
             }
             else
@@ -186,18 +182,11 @@ namespace Process_Times
         #endregion
 
         #region Notifications
-        public void ConfirmCancel(string windowName, ManualEntryWindow manualEntryWindow, GenerateDataSetWindow generateDataSetWindow)
+        public void ConfirmCancel(WindowBase window)
         {
-            if (_notifications.ConfirmCancel(windowName))
+            if (_notifications.ConfirmCancel(window.Title))
             {
-                if (manualEntryWindow != null)
-                {
-                    manualEntryWindow.Close();
-                }
-                if (generateDataSetWindow != null)
-                {
-                    generateDataSetWindow.Close();
-                }
+                    window.Close();                
             }
         }
         public void ConfirmWindowClose(string windowName, CancelEventArgs e, bool isMainWindow)

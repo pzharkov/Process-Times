@@ -14,9 +14,8 @@ using System.Windows.Shapes;
 
 namespace Process_Times
 {
-    public partial class AllDataWindow : Window
+    public partial class AllDataWindow : WindowBase
     {
-        private AppManager _appManager = null;
         private ViewDataWindow _owner = null;
 
         public AllDataWindow()
@@ -25,14 +24,14 @@ namespace Process_Times
         }
         public void PassReferences(AppManager appManager, ViewDataWindow owner)
         {
-            _appManager = appManager;
+            appManager = appManager;
             _owner = owner;
         }
 
         private void MainWindowClick(object sender, RoutedEventArgs e)
         {
             _owner.Close();
-            _appManager.ShowMainWindow();
+            appManager.ShowMainWindow();
 
             Close();
         }

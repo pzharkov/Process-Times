@@ -18,34 +18,33 @@ namespace Process_Times
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : WindowBase
     {
-        private readonly AppManager _appManager = new AppManager();
-
         public MainWindow()
         {
             InitializeComponent();
+            appManager = new AppManager();
         }
 
         private void EnterData(object sender, RoutedEventArgs e)
         {                        
-            _appManager.EnterData(this);
+            appManager.EnterData(this);
         }
         private void ViewData(object sender, RoutedEventArgs e)
         {
-            _appManager.ViewData(this);
+            appManager.ViewData(this);
         }
 
         private void About(object sender, RoutedEventArgs e)
         {
-            _appManager.About(this);
+            appManager.About(this);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (_appManager != null)
+            if (appManager != null)
             {
-                _appManager.ConfirmWindowClose(Title, e, true);
+                appManager.ConfirmWindowClose(Title, e, true);
             }
             else
             {

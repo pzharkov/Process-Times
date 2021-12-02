@@ -15,36 +15,28 @@ using System.ComponentModel;
 
 namespace Process_Times
 {
-    public partial class ViewDataWindow : Window
+    public partial class ViewDataWindow : WindowBase
     {
-
-        private AppManager _appManager = null;
         public ViewDataWindow()
         {
             InitializeComponent();
-        }        
-
-        public void PassReferences(AppManager appManager)
-        {
-            _appManager = appManager;
         }
-
         private void SummaryClick(object sender, RoutedEventArgs e)
         {
-            _appManager.Summary(this);
+            appManager.Summary(this);
         }
         private void AllDataClick(object sender, RoutedEventArgs e)
         {
-            _appManager.AllData(this);
+            appManager.AllData(this);
         }
         private void Back(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            CloseWindow(false);
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            _appManager.ShowMainWindow();
+            appManager.ShowMainWindow();
         }
     }
 }

@@ -17,10 +17,8 @@ namespace Process_Times
     /// <summary>
     /// Interaction logic for GenerateDataSetWindow.xaml
     /// </summary>
-    public partial class GenerateDataSetWindow : Window
+    public partial class GenerateDataSetWindow : WindowBase
     {
-        private AppManager _appManager = null;
-
         public GenerateDataSetWindow()
         {
             InitializeComponent();
@@ -28,7 +26,7 @@ namespace Process_Times
         
         public void PassReferences(AppManager appManager)
         {
-            _appManager = appManager;
+            appManager = appManager;
         }
 
         private void SubmitClick(object sender, RoutedEventArgs e)
@@ -38,7 +36,7 @@ namespace Process_Times
             ValidRange rangeA = new ValidRange(MinATextBox.Text, MaxATextBox.Text, MinALabel, MaxALabel);
             ValidRange rangeB = new ValidRange(MinBTextBox.Text, MaxBTextBox.Text, MinBLabel, MaxBLabel);
 
-            _appManager.SubmitGenerateDataSet(this, numberOfEntries, rangeA, rangeB);
+            appManager.SubmitGenerateDataSet(this, numberOfEntries, rangeA, rangeB);
         }
         private void CancelClick(object sender, RoutedEventArgs e)
         {
