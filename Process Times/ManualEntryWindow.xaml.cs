@@ -49,16 +49,24 @@ namespace Process_Times
         }
         private void CancelClick(object sender, RoutedEventArgs e)
         {
+            TryToClose(!AllBlank(), null);
+        }
+
+        private void WindowBase_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            TryToClose(!AllBlank(), e);
+        }
+
+        private bool AllBlank()
+        {            
             if (ProductListBox.SelectedItem == null && ProcessTimeTxtBox.Text == "")
             {
-                Close();
+                return true;
             }
             else
             {
-                appManager.ConfirmCancel(this);
+                return false;
             }
-            
         }
-        
     }
 }

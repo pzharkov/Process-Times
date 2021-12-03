@@ -34,7 +34,7 @@ namespace Process_Times
 
         private void BackClick(object sender, RoutedEventArgs e)
         {
-            CloseWindow(true);
+            TryToClose(true, null);
         }
     }
 }

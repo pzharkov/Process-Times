@@ -53,8 +53,7 @@ namespace Process_Times
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            appManager.ShowMainWindow();
-            Close();
+            TryToClose(false, null);
         }
     }
 }

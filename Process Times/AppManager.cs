@@ -20,21 +20,10 @@ namespace Process_Times
         private MainWindow _mainWindow = null;
 
         #region Enter Data and Sub-Windows Functions       
-        public void EnterData(MainWindow mainWindow)
+        public void EnterData(WindowBase owner)
         {
-            // open a new Enter Data window, hide main window to prevent multiple windows opened at once
-            System.Diagnostics.Debug.WriteLine("Open Enter Data window.");
-
-            // create and show new window
-            EnterDataWindow enterDataWindow = new EnterDataWindow();
-            enterDataWindow.Show();
-
-            // pass reference to app manager
-            enterDataWindow.PassReferences(this);
-
-            // hide main window
-            _mainWindow = mainWindow;
-            HideMainWindow();
+            EnterDataWindow _newWindow = new();
+            OpenNewWindow(_newWindow, owner);
         }
         
         public void ManualEntry(WindowBase owner)
@@ -86,12 +75,7 @@ namespace Process_Times
         }
 
         #endregion
-
-        public void TestOpenNewWindow()
-        {
-            MainWindow _newWindow = new();
-            OpenNewWindow(_newWindow, _newWindow);
-        }
+        
         private void OpenNewWindow(WindowBase newWindow, WindowBase owner)
         {
             System.Diagnostics.Debug.WriteLine("Open" + newWindow.Title + ".");
@@ -165,30 +149,13 @@ namespace Process_Times
         #endregion
 
         #region Notifications
-        public void ConfirmCancel(WindowBase window)
+        public bool ConfirmCancel(WindowBase window)
         {
-            if (_notifications.ConfirmCancel(window.Title))
-            {
-                    window.Close();                
-            }
+            return _notifications.ConfirmCancel(window.Title);
         }
-        public void ConfirmWindowClose(string windowName, CancelEventArgs e, bool isMainWindow)
+        public bool ConfirmClose(WindowBase window)
         {
-            if (_notifications.ConfirmCloseWindow(windowName))
-            {
-                System.Diagnostics.Debug.WriteLine("Close " + windowName + " window.");
-                
-                if (!isMainWindow)
-                {
-                    ShowMainWindow();
-                }
-            }
-            else
-            {
-                e.Cancel = true;
-                System.Diagnostics.Debug.WriteLine("Cancel Close Window.");
-            }
-
+            return (_notifications.ConfirmCloseWindow(window.Title));
         }
         #endregion
 

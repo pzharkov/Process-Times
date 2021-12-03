@@ -31,7 +31,7 @@ namespace Process_Times
         }
         private void Back(object sender, RoutedEventArgs e)
         {
-            CloseWindow(false);
+            TryToClose(false, null);
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
