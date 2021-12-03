@@ -37,10 +37,10 @@ namespace Process_Times
             HideMainWindow();
         }
         
-        public void ManualEntry(EnterDataWindow owner)
+        public void ManualEntry(WindowBase owner)
         {
-            EnterDataWindow _newWindow = new();
-            OpenNewWindow(_newWindow, _newWindow);
+            ManualEntryWindow _newWindow = new();
+            OpenNewWindow(_newWindow, owner);
         }
 
         public void SubmitManualEntry(ManualEntryWindow manualEntryWindow, ValidEntry processTime, ValidEntry productSelected)
@@ -65,14 +65,8 @@ namespace Process_Times
 
         public void GenerateDataSet(EnterDataWindow owner)
         {
-            System.Diagnostics.Debug.WriteLine("Open Generate Data Set window.");
-
-            // create, pass reference to appmanager and show dialog
-            GenerateDataSetWindow generateDataSetWindow = new GenerateDataSetWindow();
-            generateDataSetWindow.PassReferences(this);
-            generateDataSetWindow.parentWindow = owner;
-            generateDataSetWindow.ShowDialog();
-            
+            GenerateDataSetWindow _newWindow = new();
+            OpenNewWindow(_newWindow, owner);
         }
 
         public void SubmitGenerateDataSet(GenerateDataSetWindow generateDataSetWindow, ValidEntry numberOfEntries, ValidRange rangeA, ValidRange rangeB)
@@ -105,7 +99,7 @@ namespace Process_Times
             newWindow.PassReference(this, owner);
             newWindow.Show();
             owner.Hide();
-        }
+        }        
 
         #region View Data and Sub-Windows Functions
         public void ViewData(WindowBase owner)
@@ -126,30 +120,19 @@ namespace Process_Times
 
         public void AllData(ViewDataWindow owner)
         {
-            System.Diagnostics.Debug.WriteLine("Open All Data window.");
-
-            // create and show new window
-            AllDataWindow allDataWindow = new AllDataWindow();
-
-            allDataWindow.PassReferences(this, owner);
-            allDataWindow.parentWindow = owner;
-            allDataWindow.ShowDialog();
+            AllDataWindow newWindow = new();
+            OpenNewWindow(newWindow, owner);
         }
         #endregion
 
         #region About Window Functions
-        public void About(MainWindow mainWindow)
+        public void About(MainWindow owner)
         {
-            // open About window
-            System.Diagnostics.Debug.WriteLine("Open About window.");
-
-            // create, pass reference to app manager and show new window
-            AboutWindow aboutWindow = new AboutWindow();
-            aboutWindow.PassReferences(this);
-            aboutWindow.Show();
+            AboutWindow newWindow = new();
+            OpenNewWindow(newWindow, owner);
 
             // hide main window
-            _mainWindow = mainWindow;
+            _mainWindow = owner;
             HideMainWindow();
         }
         #endregion
