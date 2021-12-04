@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Generate Data Set Window" Height="650" Width="800"
         WindowStartupLocation="CenterOwner"
-                  Closing="WindowBase_Closing">
+                  Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -57,6 +57,6 @@
         <Label Name="MaxBLabel" Content="" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="4" HorizontalAlignment="Center" Height="57" Grid.Row="9" VerticalAlignment="Center" Width="220" FontSize="12"/>
 
         <Button Content="SUBMIT" Click="SubmitClick" HorizontalAlignment="Left" Height="70" Grid.Row="11" VerticalAlignment="Center" Width="250" FontSize="24" Grid.ColumnSpan="3" Margin="70,0,0,0"/>
-        <Button Content="CANCEL" Click="CancelClick" Grid.Column="4" HorizontalAlignment="Center" Height="70" Grid.Row="11" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="CANCEL" Click="Back" Grid.Column="4" HorizontalAlignment="Center" Height="70" Grid.Row="11" VerticalAlignment="Center" Width="250" FontSize="24"/>
     </Grid>
 </local:WindowBase>

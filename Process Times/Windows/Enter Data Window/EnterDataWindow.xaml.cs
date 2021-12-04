@@ -21,17 +21,6 @@ namespace Process_Times
         {
             InitializeComponent();
         }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            TryToClose(e);
-        }
-
-        public void PassReferences(AppManager _appManager)
-        {
-            appManager = _appManager;
-        }
-
         private void ManualEntryClick(object sender, RoutedEventArgs e)
         {
             appManager.ManualEntry(this);
@@ -39,11 +28,6 @@ namespace Process_Times
         private void GenerateDataSetClick(object sender, RoutedEventArgs e)
         {
             appManager.GenerateDataSet(this);
-        }
-
-        private void Back(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }

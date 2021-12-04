@@ -38,11 +38,6 @@ namespace Process_Times
         private void About(object sender, RoutedEventArgs e)
         {
             appManager.About(this);
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            TryToClose(e);
-        }
+        }        
     }
 }

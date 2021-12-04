@@ -16,26 +16,13 @@ namespace Process_Times
 {
     public partial class AllDataWindow : WindowBase
     {
-        private ViewDataWindow _owner = null;
-
         public AllDataWindow()
         {
             InitializeComponent();
         }
-
         private void MainWindowClick(object sender, RoutedEventArgs e)
         {
             ReturnToMainWindow();
-        }
-
-        private void BackClick(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void WindowBase_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            TryToClose(e);
         }
     }
 }

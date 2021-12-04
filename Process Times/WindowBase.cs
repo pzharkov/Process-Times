@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.ComponentModel;
 
 namespace Process_Times
 {
@@ -17,9 +18,21 @@ namespace Process_Times
         public AppManager appManager { get => _appManager; set => _appManager = value; }
         public WindowBase parentWindow { get => _parentWindow; set => _parentWindow = value; }
 
+        public void Window_Closing(object sender, CancelEventArgs e)
+        {
+            TryToClose(e);
+        }
+        public void Back(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
 
         public void TryToClose(System.ComponentModel.CancelEventArgs closingEvent)
         {
+            // search active window for text boxes and list boxes
+            // check if any are not blank, request confirmation if found any
+            // close if confirmed or cancel closing event if not
             if (AllBlank())
             {
                 CloseWindow();
@@ -39,6 +52,8 @@ namespace Process_Times
 
         public void PassReference(AppManager appManagerInstance, WindowBase ownerInstance)
         {
+            // called by app manager when creating a new window
+            // pass reference to app manager and parent window instances and match TOP/LEFT to parent window's
             appManager = appManagerInstance;
             parentWindow = ownerInstance;
 
@@ -48,6 +63,7 @@ namespace Process_Times
         
         public void ReturnToMainWindow()
         {
+            // replace parent window with main window and then close both parent and current windows
             WindowBase _mainWindow = (WindowBase)parentWindow.Owner;
 
             parentWindow.Owner = null;

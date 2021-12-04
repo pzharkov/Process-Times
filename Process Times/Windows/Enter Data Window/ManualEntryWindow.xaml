@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ManualEntryWindow" Height="450" Width="400"
         WindowStartupLocation="CenterOwner"
-                  Closing="WindowBase_Closing">
+                  Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -30,7 +30,7 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
         <Button Content="SUBMIT" Click="SubmitClick" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="9" VerticalAlignment="Center" Width="250" FontSize="24"/>
-        <Button Content="CANCEL" Click="CancelClick" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="11" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="CANCEL" Click="Back" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="11" VerticalAlignment="Center" Width="250" FontSize="24"/>
         <TextBox Name="ProcessTimeTxtBox" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="40" TextWrapping="Wrap" VerticalAlignment="Center" Width="240" Grid.Row="1" FontSize="16"/>
         <Label Name="ProcessTimeLabel" Content="ENTER PROCESS TIME" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Height="23" Grid.Row="3" VerticalAlignment="Center" Width="256" FontSize="12"/>
         <Label Name="ProductLabel" Content="SELECT PRODUCT" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Height="23" Grid.Row="7" VerticalAlignment="Center" Width="256" FontSize="12"/>

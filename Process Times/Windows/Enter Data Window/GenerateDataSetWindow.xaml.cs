@@ -22,25 +22,15 @@ namespace Process_Times
         public GenerateDataSetWindow()
         {
             InitializeComponent();
-        }
-
+        }        
         private void SubmitClick(object sender, RoutedEventArgs e)
         {
-            // create constructs
+            // construct parameters
             ValidEntry numberOfEntries = new ValidEntry(NumberOfEntriesTextBox.Text, NumberOfEntriesLabel);
             ValidRange rangeA = new ValidRange(MinATextBox.Text, MaxATextBox.Text, MinALabel, MaxALabel);
             ValidRange rangeB = new ValidRange(MinBTextBox.Text, MaxBTextBox.Text, MinBLabel, MaxBLabel);
 
             appManager.SubmitGenerateDataSet(this, numberOfEntries, rangeA, rangeB);
-        }
-        private void CancelClick(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void WindowBase_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            TryToClose(e);
         }
     }
 }

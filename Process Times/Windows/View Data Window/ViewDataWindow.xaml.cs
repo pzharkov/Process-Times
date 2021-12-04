@@ -29,14 +29,5 @@ namespace Process_Times
         {
             appManager.AllData(this);
         }
-        private void Back(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void Window_Closing(object sender, CancelEventArgs e)
-        {
-            TryToClose(e);
-        }
     }
 }

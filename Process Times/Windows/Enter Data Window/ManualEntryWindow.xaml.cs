@@ -20,11 +20,8 @@ namespace Process_Times
         private string _product;
         public ManualEntryWindow()
         {
-            Owner = parentWindow;
-
             InitializeComponent();
-        }
-
+        }        
         private void SubmitClick(object sender, RoutedEventArgs e)
         {
             _product = null;
@@ -38,15 +35,6 @@ namespace Process_Times
             ValidEntry productSelected = new ValidEntry(_product, ProductLabel);
 
             appManager.SubmitManualEntry(this, processTime, productSelected);
-        }
-        private void CancelClick(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void WindowBase_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            TryToClose(e);
         }
     }
 }

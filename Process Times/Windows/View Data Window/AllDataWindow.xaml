@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="AllDataWindow" Height="450" Width="800"
         WindowStartupLocation="CenterOwner"
-                  Closing="WindowBase_Closing">
+                  Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="41*"/>
@@ -28,7 +28,7 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
         <Button Content="MAIN WINDOW" Click="MainWindowClick" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="6" VerticalAlignment="Center" Width="250" FontSize="24"/>
-        <Button Content="BACK" Click="BackClick" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="8" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="BACK" Click="Back" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="8" VerticalAlignment="Center" Width="250" FontSize="24"/>
         <DataGrid Grid.Column="2" Grid.Row="1" Grid.RowSpan="8" Margin="10,10,10,10">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Order Nmber" Width="1*"></DataGridTextColumn>
