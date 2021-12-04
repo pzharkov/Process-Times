@@ -42,7 +42,7 @@ namespace Process_Times
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            TryToClose(false, e);
+            TryToClose(e);
         }
     }
 }

@@ -18,32 +18,23 @@ namespace Process_Times
         public WindowBase parentWindow { get => _parentWindow; set => _parentWindow = value; }
 
 
-        public void TryToClose(bool needConfirmation, System.ComponentModel.CancelEventArgs closingEvent)
+        public void TryToClose(System.ComponentModel.CancelEventArgs closingEvent)
         {
-            /*
-            if (closingEvent != null)
+            if (AllBlank())
             {
-                if (needConfirmation && !CloseConfirmed())
+                CloseWindow();
+            }
+            else
+            {
+                if (CloseConfirmed())
+                {
+                    CloseWindow();
+                }
+                else
                 {
                     closingEvent.Cancel = true;
                 }
             }
-            else
-            {
-                if (needConfirmation)
-                {
-                    if (CloseConfirmed())
-                    {
-                        CloseWindow();
-                    }
-                }
-                else
-                {
-                    CloseWindow();
-                }
-            }
-            */
-            AllBlank();
         }
 
         public void PassReference(AppManager appManagerInstance, WindowBase ownerInstance)
@@ -62,25 +53,28 @@ namespace Process_Times
 
         private void CloseWindow()
         {
-            parentWindow.Show();
-            Close();
+            if (parentWindow != null)
+            {
+                parentWindow.Show();
+            }
         }
 
-        public static IEnumerable<T> WindowControls<T>(DependencyObject depObj) where T : DependencyObject
+        private IEnumerable<T> WindowElements<T>(DependencyObject obj) where T : DependencyObject
         {
-            if (depObj != null)
+            // search through children and children of children and return all objects of type T
+
+            if (obj != null)
             {
-                foreach(object rawChild in LogicalTreeHelper.GetChildren(depObj))
+                foreach(object child in LogicalTreeHelper.GetChildren(obj))
                 {
-                    if (rawChild is DependencyObject)
+                    if (child is DependencyObject)
                     {
-                        DependencyObject child = (DependencyObject)rawChild;
                         if (child is T)
                         {
                             yield return (T)child;
                         }
-
-                        foreach (T childOfChild in WindowControls<T>(child))
+                        
+                        foreach (T childOfChild in WindowElements<T>((DependencyObject)child))
                         {
                             yield return childOfChild;
                         }
@@ -89,12 +83,29 @@ namespace Process_Times
             }
         }
 
-        private void AllBlank()
+        private bool AllBlank()
         {
-            foreach (TextBox textBox in WindowControls<TextBox>(this))
+            // return false if any text boxes or list boxes are not blank or have selection
+
+            bool _allBlank = true;
+
+            foreach (TextBox textBox in WindowElements<TextBox>(this))
             {
-                System.Diagnostics.Debug.WriteLine(textBox.Text);
+                if (textBox.Text != "")
+                {
+                    _allBlank = false;
+                }
             }
+
+            foreach (ListBox listBox in WindowElements<ListBox>(this))
+            {
+                if (listBox.SelectedItem != null)
+                {
+                    _allBlank = false;
+                }
+            }
+
+            return _allBlank;
         }
     }
 }

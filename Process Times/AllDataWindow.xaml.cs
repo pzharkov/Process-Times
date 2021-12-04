@@ -22,11 +22,6 @@ namespace Process_Times
         {
             InitializeComponent();
         }
-        public void PassReferences(AppManager appManager, ViewDataWindow owner)
-        {
-            appManager = appManager;
-            _owner = owner;
-        }
 
         private void MainWindowClick(object sender, RoutedEventArgs e)
         {

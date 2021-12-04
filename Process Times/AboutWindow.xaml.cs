@@ -38,11 +38,6 @@ namespace Process_Times
             }
         }
 
-        public void PassReferences(AppManager appManager)
-        {
-            appManager = appManager;
-        }
-
         private void Back(object sender, RoutedEventArgs e)
         {
             if (appManager != null)

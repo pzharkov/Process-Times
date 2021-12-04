@@ -34,7 +34,7 @@
         <TextBox Name="ProcessTimeTxtBox" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="40" TextWrapping="Wrap" VerticalAlignment="Center" Width="240" Grid.Row="1" FontSize="16"/>
         <Label Name="ProcessTimeLabel" Content="ENTER PROCESS TIME" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Height="23" Grid.Row="3" VerticalAlignment="Center" Width="256" FontSize="12"/>
         <Label Name="ProductLabel" Content="SELECT PRODUCT" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Height="23" Grid.Row="7" VerticalAlignment="Center" Width="256" FontSize="12"/>
-        <ListBox Name="ProductListBox" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="60" Grid.Row="5" VerticalAlignment="Center" Width="240" SelectionMode="Single" SelectionChanged="ListBox_SelectionChanged" FontSize="16">
+        <ListBox Name="ProductListBox" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="60" Grid.Row="5" VerticalAlignment="Center" Width="240" SelectionMode="Single" FontSize="16">
             <ListBoxItem>A</ListBoxItem>
             <ListBoxItem>B</ListBoxItem>
         </ListBox>

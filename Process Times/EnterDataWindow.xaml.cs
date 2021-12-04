@@ -24,17 +24,7 @@ namespace Process_Times
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (appManager != null)
-            {
-                appManager.ShowMainWindow();
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Missing _appManager reference when closing Enter Data window.");
-                e.Cancel = true;
-
-                System.Diagnostics.Debug.WriteLine("Cancel Close Window.");
-            }
+            TryToClose(e);
         }
 
         public void PassReferences(AppManager _appManager)
@@ -53,7 +43,7 @@ namespace Process_Times
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            TryToClose(false, null);
+            Close();
         }
     }
 }

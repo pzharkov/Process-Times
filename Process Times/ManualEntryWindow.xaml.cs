@@ -15,22 +15,14 @@ using System.Windows.Shapes;
 
 namespace Process_Times
 {
-    /// <summary>
-    /// Interaction logic for ManualEntryWindow.xaml
-    /// </summary>
     public partial class ManualEntryWindow : WindowBase
     {
-        private string _product = null;
-        
-
+        private string _product;
         public ManualEntryWindow()
         {
+            Owner = parentWindow;
+
             InitializeComponent();
-        }
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
         private void SubmitClick(object sender, RoutedEventArgs e)
@@ -49,24 +41,12 @@ namespace Process_Times
         }
         private void CancelClick(object sender, RoutedEventArgs e)
         {
-            TryToClose(!AllBlank(), null);
+            Close();
         }
 
         private void WindowBase_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            TryToClose(!AllBlank(), e);
-        }
-
-        private bool AllBlank()
-        {            
-            if (ProductListBox.SelectedItem == null && ProcessTimeTxtBox.Text == "")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            TryToClose(e);
         }
     }
 }

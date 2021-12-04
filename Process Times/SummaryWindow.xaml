@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Process_Times"
         mc:Ignorable="d"
         Title="SummaryWindow" Height="450" Width="400"
-        WindowStartupLocation="CenterOwner">
+        WindowStartupLocation="CenterOwner"
+                  Closing="WindowBase_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="6*"/>

@@ -23,11 +23,6 @@ namespace Process_Times
         {
             InitializeComponent();
         }
-        
-        public void PassReferences(AppManager appManager)
-        {
-            appManager = appManager;
-        }
 
         private void SubmitClick(object sender, RoutedEventArgs e)
         {
@@ -41,6 +36,11 @@ namespace Process_Times
         private void CancelClick(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void WindowBase_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            TryToClose(e);
         }
     }
 }

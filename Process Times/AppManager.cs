@@ -83,7 +83,7 @@ namespace Process_Times
             newWindow.PassReference(this, owner);
             newWindow.Show();
             owner.Hide();
-        }        
+        }
 
         #region View Data and Sub-Windows Functions
         public void ViewData(WindowBase owner)

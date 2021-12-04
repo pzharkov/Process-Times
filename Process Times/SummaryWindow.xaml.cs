@@ -34,7 +34,12 @@ namespace Process_Times
 
         private void BackClick(object sender, RoutedEventArgs e)
         {
-            TryToClose(true, null);
+            Close();
+        }
+
+        private void WindowBase_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            TryToClose(e);
         }
     }
 }

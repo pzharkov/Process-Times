@@ -31,12 +31,12 @@ namespace Process_Times
         }
         private void Back(object sender, RoutedEventArgs e)
         {
-            TryToClose(false, null);
+            Close();
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            appManager.ShowMainWindow();
+            TryToClose(e);
         }
     }
 }
