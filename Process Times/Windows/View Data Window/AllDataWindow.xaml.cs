@@ -25,15 +25,17 @@ namespace Process_Times
 
         private void MainWindowClick(object sender, RoutedEventArgs e)
         {
-            _owner.Close();
-            appManager.ShowMainWindow();
-
-            Close();
+            ReturnToMainWindow();
         }
 
         private void BackClick(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void WindowBase_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            TryToClose(e);
         }
     }
 }

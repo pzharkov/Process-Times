@@ -8,13 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="GenerateDataSetWindow.xaml.cs">
+    <Compile Update="Windows\Enter Data Window\GenerateDataSetWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="GenerateDataSetWindow.xaml">
+    <Page Update="Windows\Enter Data Window\GenerateDataSetWindow.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

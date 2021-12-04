@@ -41,6 +41,21 @@ namespace Process_Times
         {
             appManager = appManagerInstance;
             parentWindow = ownerInstance;
+
+            Left = parentWindow.Left;
+            Top = parentWindow.Top;
+        }
+        
+        public void ReturnToMainWindow()
+        {
+            WindowBase _mainWindow = (WindowBase)parentWindow.Owner;
+
+            parentWindow.Owner = null;
+            parentWindow.Close();
+
+            parentWindow = _mainWindow;
+            Close();
+
         }
 
         private bool CloseConfirmed()
