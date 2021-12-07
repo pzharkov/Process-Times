@@ -9,9 +9,8 @@ namespace Process_Times
     class DataValidation
     {
         private int _validInt;
-        private double _validDouble;
-
-        #region Manual Entry Validation       
+        private float _validFloat;
+  
         public bool ValidProductSelected(string product)
         {
             if (product != null)
@@ -23,9 +22,6 @@ namespace Process_Times
                 return false;
             }
         }
-        #endregion
-
-        #region Generate Data Set Validation
         
         public bool IsValidInt(string validInt)
         {
@@ -40,10 +36,10 @@ namespace Process_Times
             }
         }
 
-        public bool IsValidDouble(string validDouble)
+        public bool IsValidFloat(string validFloat)
         {
             // try to parse as double and see if positive number
-            if (double.TryParse(validDouble, out _validDouble) && double.Parse(validDouble) > 0f)
+            if (float.TryParse(validFloat, out _validFloat) && float.Parse(validFloat) > 0f)
             {
                 return true;
             }
@@ -52,6 +48,5 @@ namespace Process_Times
                 return false;
             }
         }
-        #endregion
     }
 }

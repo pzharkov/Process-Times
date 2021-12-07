@@ -17,7 +17,14 @@ namespace Process_Times
         private readonly DBManager _dbManager = new();
         private readonly Notifications _notifications = new();
 
-        private MainWindow _mainWindow = null;
+        private void OpenNewWindow(WindowBase newWindow, WindowBase owner)
+        {
+            System.Diagnostics.Debug.WriteLine("Open " + newWindow.Title + ".");
+
+            newWindow.PassReference(this, owner);
+            newWindow.Show();
+            owner.Hide();
+        }
 
         #region Enter Data and Sub-Windows Functions       
         public void EnterData(WindowBase owner)
@@ -39,7 +46,7 @@ namespace Process_Times
 
             // validate process time
 
-            _validProcessTime = IsValidDouble(processTime, "Only use positive decimal numbers.");
+            _validProcessTime = IsValidFloat(processTime, "Only use positive decimal numbers.");
             _validProductSelected = IsNotNull(productSelected, "Missing selection.");
 
             // determine next step
@@ -76,24 +83,11 @@ namespace Process_Times
 
         #endregion
         
-        private void OpenNewWindow(WindowBase newWindow, WindowBase owner)
-        {
-            System.Diagnostics.Debug.WriteLine("Open" + newWindow.Title + ".");
-
-            newWindow.PassReference(this, owner);
-            newWindow.Show();
-            owner.Hide();
-        }
-
         #region View Data and Sub-Windows Functions
         public void ViewData(WindowBase owner)
         {
             ViewDataWindow newWindow = new();
             OpenNewWindow(newWindow, owner);
-            
-            // hide main window
-            _mainWindow = (MainWindow)owner;
-            HideMainWindow();
         }
 
         public void Summary(WindowBase owner)
@@ -114,37 +108,6 @@ namespace Process_Times
         {
             AboutWindow newWindow = new();
             OpenNewWindow(newWindow, owner);
-
-            // hide main window
-            _mainWindow = owner;
-            HideMainWindow();
-        }
-        #endregion
-
-        #region MainWindow Show and Hide
-        public void ShowMainWindow()
-        {
-            if (_mainWindow != null)
-            {
-                System.Diagnostics.Debug.WriteLine("Show Main window.");
-                _mainWindow.Show();
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Main Window = null.");
-            }
-        }
-        public void HideMainWindow()
-        {
-            if (_mainWindow != null)
-            {
-                System.Diagnostics.Debug.WriteLine("Hide Main window.");
-                _mainWindow.Hide();
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Main Window = null.");
-            }
         }
         #endregion
 
@@ -178,11 +141,11 @@ namespace Process_Times
 
             return _isValid;
         }
-        private bool IsValidDouble(ValidEntry entry, string invalidMessage)
+        private bool IsValidFloat(ValidEntry entry, string invalidMessage)
         {
             bool _isValid = false;
 
-            if (_dataValidation.IsValidDouble(entry.entry))
+            if (_dataValidation.IsValidFloat(entry.entry))
             {
                 ValidEntry(entry.label);
             }
@@ -203,7 +166,7 @@ namespace Process_Times
             bool _isValidMax = false;
             
             // check min
-            if (_dataValidation.IsValidDouble(range.min))
+            if (_dataValidation.IsValidFloat(range.min))
             {
                 _isValidMin = true;
                 ValidEntry(range.minLabel);
@@ -214,7 +177,7 @@ namespace Process_Times
             }
 
             // check max
-            if (_dataValidation.IsValidDouble(range.max))
+            if (_dataValidation.IsValidFloat(range.max))
             {
                 _isValidMax = true;
                 ValidEntry(range.maxLabel);
@@ -247,6 +210,7 @@ namespace Process_Times
         private bool IsNotNull(ValidEntry entry, string invalidMessage)
         {
             bool _isValid = false;
+
             if (entry.entry != null)
             {
                 ValidEntry(entry.label);
