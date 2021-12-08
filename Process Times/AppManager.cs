@@ -17,6 +17,7 @@ namespace Process_Times
         private readonly DBManager _dbManager = new();
         private readonly Notifications _notifications = new();
 
+        #region Window Management Methods
         private void OpenNewWindow(WindowBase newWindow, WindowBase owner)
         {
             System.Diagnostics.Debug.WriteLine("Open " + newWindow.Title + ".");
@@ -25,44 +26,60 @@ namespace Process_Times
             newWindow.Show();
             owner.Hide();
         }
-
-        #region Enter Data and Sub-Windows Functions       
+        public void About(MainWindow owner)
+        {
+            AboutWindow newWindow = new();
+            OpenNewWindow(newWindow, owner);
+        }
+        public void AllData(ViewDataWindow owner)
+        {
+            AllDataWindow newWindow = new();
+            OpenNewWindow(newWindow, owner);
+        }
         public void EnterData(WindowBase owner)
         {
             EnterDataWindow _newWindow = new();
             OpenNewWindow(_newWindow, owner);
         }
-        
+        public void GenerateDataSet(EnterDataWindow owner)
+        {
+            GenerateDataSetWindow _newWindow = new();
+            OpenNewWindow(_newWindow, owner);
+        }
         public void ManualEntry(WindowBase owner)
         {
             ManualEntryWindow _newWindow = new();
             OpenNewWindow(_newWindow, owner);
         }
-
-        public void SubmitManualEntry(ManualEntryWindow manualEntryWindow, ValidEntry processTime, ValidEntry productSelected)
+        public void Summary(WindowBase owner)
         {
-            bool _validProcessTime = false;
-            bool _validProductSelected = false;
+            SummaryWindow newWindow = new();
+            OpenNewWindow(newWindow, owner);
+        }
+        public void ViewData(WindowBase owner)
+        {
+            ViewDataWindow newWindow = new();
+            OpenNewWindow(newWindow, owner);
+        }                
+        #endregion
 
-            // validate process time
+        #region Submit Methods
+        public void SubmitManualEntry(ManualEntryWindow manualEntryWindow, ValidEntry processTime, ValidEntry productSelected)
+        {   
+            // validate
 
-            _validProcessTime = IsValidFloat(processTime, "Only use positive decimal numbers.");
-            _validProductSelected = IsNotNull(productSelected, "Missing selection.");
-
-            // determine next step
+            bool _validProcessTime = IsValidFloat(processTime, "Only use positive decimal numbers.");
+            bool _validProductSelected = IsNotNull(productSelected, "Missing selection.");
+                        
             if (_validProcessTime && _validProductSelected)
             {
+                System.Diagnostics.Debug.WriteLine("Valid Entries. Proceed.");
                 // update DB
 
                 // update UI
                 manualEntryWindow.Close();
             }
-        }
-
-        public void GenerateDataSet(EnterDataWindow owner)
-        {
-            GenerateDataSetWindow _newWindow = new();
-            OpenNewWindow(_newWindow, owner);
+            // determine next step
         }
 
         public void SubmitGenerateDataSet(GenerateDataSetWindow generateDataSetWindow, ValidEntry numberOfEntries, ValidRange rangeA, ValidRange rangeB)
@@ -77,40 +94,9 @@ namespace Process_Times
                 System.Diagnostics.Debug.WriteLine("Valid Entries. Proceed.");
             }
             // determine next step
-
-
         }
-
         #endregion
         
-        #region View Data and Sub-Windows Functions
-        public void ViewData(WindowBase owner)
-        {
-            ViewDataWindow newWindow = new();
-            OpenNewWindow(newWindow, owner);
-        }
-
-        public void Summary(WindowBase owner)
-        {
-            SummaryWindow newWindow = new();
-            OpenNewWindow(newWindow, owner);
-        }
-
-        public void AllData(ViewDataWindow owner)
-        {
-            AllDataWindow newWindow = new();
-            OpenNewWindow(newWindow, owner);
-        }
-        #endregion
-
-        #region About Window Functions
-        public void About(MainWindow owner)
-        {
-            AboutWindow newWindow = new();
-            OpenNewWindow(newWindow, owner);
-        }
-        #endregion
-
         #region Notifications
         public bool ConfirmCancel(WindowBase window)
         {
@@ -122,41 +108,36 @@ namespace Process_Times
         }
         #endregion
 
-        #region Validation
+        #region Validation Methods
         private bool IsValidInt(ValidEntry entry, string invalidMessage)
         {
-            bool _isValid = false;
+            bool _isValid = _dataValidation.IsValidInt(entry.entry);
 
-            if (_dataValidation.IsValidInt(entry.entry))
+            if (_isValid)
             {
                 ValidEntry(entry.label);
-
-                _isValid = true;
             }
             else
             {
-                InvalidEntry(entry.label, invalidMessage);
-                _isValid = false;
+                InvalidEntry(entry.label, invalidMessage);                
             }
 
             return _isValid;
         }
         private bool IsValidFloat(ValidEntry entry, string invalidMessage)
         {
-            bool _isValid = false;
+            bool _isValid = _dataValidation.IsValidFloat(entry.entry);
 
-            if (_dataValidation.IsValidFloat(entry.entry))
+            if (_isValid)
             {
                 ValidEntry(entry.label);
             }
             else
             {
-                InvalidEntry(entry.label, invalidMessage);
-                _isValid = false;
+                InvalidEntry(entry.label, invalidMessage);                
             }
 
-            return _isValid;
-        
+            return _isValid;        
         }
         private bool IsValidRange(ValidRange range)
         {
