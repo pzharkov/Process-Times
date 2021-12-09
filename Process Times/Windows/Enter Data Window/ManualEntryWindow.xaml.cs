@@ -31,8 +31,8 @@ namespace Process_Times
                 _product = ProductListBox.SelectedItem.ToString();
             }
 
-            ValidEntry processTime = new ValidEntry(ProcessTimeTxtBox.Text, ProcessTimeLabel);
-            ValidEntry productSelected = new ValidEntry(_product, ProductLabel);
+            EntryInput processTime = new EntryInput(ProcessTimeTxtBox.Text, ProcessTimeLabel);
+            EntryInput productSelected = new EntryInput(_product, ProductLabel);
 
             appManager.SubmitManualEntry(this, processTime, productSelected);
         }

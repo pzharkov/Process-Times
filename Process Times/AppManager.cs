@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.ComponentModel;
 using System.Windows.Controls;
+using Process_Times.Constructs;
 
 namespace Process_Times
 {
@@ -64,7 +65,7 @@ namespace Process_Times
         #endregion
 
         #region Submit Methods
-        public void SubmitManualEntry(ManualEntryWindow manualEntryWindow, ValidEntry processTime, ValidEntry productSelected)
+        public void SubmitManualEntry(ManualEntryWindow manualEntryWindow, EntryInput processTime, EntryInput productSelected)
         {   
             // validate
 
@@ -82,27 +83,36 @@ namespace Process_Times
             // determine next step
         }
 
-        public void SubmitGenerateDataSet(GenerateDataSetWindow generateDataSetWindow, ValidEntry numberOfEntries, ValidRange rangeA, ValidRange rangeB)
+        public void SubmitGenerateDataSet(GenerateDataSetWindow generateDataSetWindow, EntryInput numberOfEntries, RangeInput rangeA, RangeInput rangeB)
         {
             // validate
             bool _validNumberOfEntries = IsValidInt(numberOfEntries, "Only use positive integers.");
             bool _validRangeA = IsValidRange(rangeA);
             bool _validRangeB = IsValidRange(rangeB);
 
+            System.Diagnostics.Debug.WriteLine("Range A: min " + rangeA.min + ", max " + rangeA.max);
+            System.Diagnostics.Debug.WriteLine("Range A: min " + rangeB.min + ", max " + rangeB.max);
+
             if (_validNumberOfEntries && _validRangeA && _validRangeB)
             {
                 System.Diagnostics.Debug.WriteLine("Valid Entries. Proceed.");
 
-                // convert strings to values
-                int _numberOfEntries = IntFromString(numberOfEntries.entry);
-                float _min = FloatFromString(rangeA.min);
-                float _max = FloatFromString(rangeA.max);
+                // convert strings to ints and float ranges, create an array to randomize product types
+                int _numberOfEntries = Int32.Parse(numberOfEntries.entry);
 
-                // enter each value in database
+                ValidRange _rangeA = new ValidRange(float.Parse(rangeA.min), float.Parse(rangeA.max));
+                ValidRange _rangeB = new ValidRange(float.Parse(rangeB.min), float.Parse(rangeB.max));
+                                
+                ValidRange[] _products = { _rangeA, _rangeB };
+
+                // for each entry, randomize product type and process time based on product ranges
                 for (int i = 0; i < _numberOfEntries; i++)
                 {
-                    float _processTime = GenerateRandomFloat(_min, _max);
-                    System.Diagnostics.Debug.WriteLine("Random Float Generated: " + _processTime);
+                    Random random = new();
+                    int _product = Convert.ToInt32(random.NextDouble());
+
+                    float _processTime = GenerateRandomFloat(_products[_product].min, _products[_product].max);
+                    System.Diagnostics.Debug.WriteLine("Randomized process time: " + _processTime);
                 }
             }
             // determine next step
@@ -121,7 +131,7 @@ namespace Process_Times
         #endregion
 
         #region Validation Methods
-        private bool IsValidInt(ValidEntry entry, string invalidMessage)
+        private bool IsValidInt(EntryInput entry, string invalidMessage)
         {
             bool _isValid = _dataValidation.IsValidInt(entry.entry);
 
@@ -136,7 +146,7 @@ namespace Process_Times
 
             return _isValid;
         }
-        private bool IsValidFloat(ValidEntry entry, string invalidMessage)
+        private bool IsValidFloat(EntryInput entry, string invalidMessage)
         {
             bool _isValid = _dataValidation.IsValidFloat(entry.entry);
 
@@ -149,9 +159,9 @@ namespace Process_Times
                 InvalidEntry(entry.label, invalidMessage);                
             }
 
-            return _isValid;        
+            return _isValid;
         }
-        private bool IsValidRange(ValidRange range)
+        private bool IsValidRange(RangeInput range)
         {
             bool _isValid = false;
 
@@ -200,7 +210,7 @@ namespace Process_Times
             return _isValid;
 
         }
-        private bool IsNotNull(ValidEntry entry, string invalidMessage)
+        private bool IsNotNull(EntryInput entry, string invalidMessage)
         {
             bool _isValid = false;
 
@@ -230,24 +240,9 @@ namespace Process_Times
             label.Content = "OK";
             label.Foreground = System.Windows.Media.Brushes.Green;
         }
-        #endregion
-
-        #region Conversion Methods
-        private int IntFromString(string conversionString)
-        {
-            int _number = Int32.Parse(conversionString);
-            return _number;
-        }
-        private float FloatFromString(string conversionString)
-        {
-            float _number = float.Parse(conversionString);
-            return _number;
-        }
-
-
-        #endregion
+        #endregion        
         private float GenerateRandomFloat(float min, float max)
-        {            
+        {
             Random random = new Random();
             double _randomFloat = random.NextDouble() * (max - min) + min;
 

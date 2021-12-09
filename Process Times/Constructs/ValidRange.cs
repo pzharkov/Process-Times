@@ -3,25 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 
-namespace Process_Times
+namespace Process_Times.Constructs
 {
     public class ValidRange
     {
-        // construct to reference ranges during validation process
+        public float min;
+        public float max;
 
-        public string min;
-        public string max;
-        public Label minLabel;
-        public Label maxLabel;
-
-        public ValidRange(string _min, string _max, Label _minLabel, Label _maxLabel)
+        public ValidRange(float _min, float _max)
         {
             min = _min;
             max = _max;
-            minLabel = _minLabel;
-            maxLabel = _maxLabel;
         }
     }
 }

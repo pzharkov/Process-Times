@@ -26,9 +26,9 @@ namespace Process_Times
         private void SubmitClick(object sender, RoutedEventArgs e)
         {
             // construct parameters
-            ValidEntry numberOfEntries = new ValidEntry(NumberOfEntriesTextBox.Text, NumberOfEntriesLabel);
-            ValidRange rangeA = new ValidRange(MinATextBox.Text, MaxATextBox.Text, MinALabel, MaxALabel);
-            ValidRange rangeB = new ValidRange(MinBTextBox.Text, MaxBTextBox.Text, MinBLabel, MaxBLabel);
+            EntryInput numberOfEntries = new EntryInput(NumberOfEntriesTextBox.Text, NumberOfEntriesLabel);
+            RangeInput rangeA = new RangeInput(MinATextBox.Text, MaxATextBox.Text, MinALabel, MaxALabel);
+            RangeInput rangeB = new RangeInput(MinBTextBox.Text, MaxBTextBox.Text, MinBLabel, MaxBLabel);
 
             appManager.SubmitGenerateDataSet(this, numberOfEntries, rangeA, rangeB);
         }
