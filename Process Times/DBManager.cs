@@ -9,28 +9,8 @@ namespace Process_Times
     // This class is responsible for managing DB related functions.
     class DBManager
     {
-        public bool DBExists()
+        public void AddEntry(float processTime, string product)
         {
-            // Checks if file with the correct name exist and if DB structure matches target format (column number, names, and data types).
-            
-            // temp only return false to test
-            return false;
         }
-
-        public void CreateDB()
-        {
-            // create db file
-        }
-
-        public void WriteToDB()
-        {
-            // write to db
-        }
-
-        public void ReadFromDB()
-        {
-            // read from db
-        }
-        
     }
 }

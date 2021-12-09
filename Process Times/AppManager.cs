@@ -92,6 +92,18 @@ namespace Process_Times
             if (_validNumberOfEntries && _validRangeA && _validRangeB)
             {
                 System.Diagnostics.Debug.WriteLine("Valid Entries. Proceed.");
+
+                // convert strings to values
+                int _numberOfEntries = IntFromString(numberOfEntries.entry);
+                float _min = FloatFromString(rangeA.min);
+                float _max = FloatFromString(rangeA.max);
+
+                // enter each value in database
+                for (int i = 0; i < _numberOfEntries; i++)
+                {
+                    float _processTime = GenerateRandomFloat(_min, _max);
+                    System.Diagnostics.Debug.WriteLine("Random Float Generated: " + _processTime);
+                }
             }
             // determine next step
         }
@@ -219,5 +231,27 @@ namespace Process_Times
             label.Foreground = System.Windows.Media.Brushes.Green;
         }
         #endregion
+
+        #region Conversion Methods
+        private int IntFromString(string conversionString)
+        {
+            int _number = Int32.Parse(conversionString);
+            return _number;
+        }
+        private float FloatFromString(string conversionString)
+        {
+            float _number = float.Parse(conversionString);
+            return _number;
+        }
+
+
+        #endregion
+        private float GenerateRandomFloat(float min, float max)
+        {            
+            Random random = new Random();
+            double _randomFloat = random.NextDouble() * (max - min) + min;
+
+            return (float)_randomFloat;
+        }
     }
 }
