@@ -75,10 +75,9 @@ namespace Process_Times
             if (_validProcessTime && _validProductSelected)
             {
                 System.Diagnostics.Debug.WriteLine("Valid Entries. Proceed.");
+                
                 // update DB
-
-                // update UI
-                manualEntryWindow.Close();
+                _dbManager.CreateDatabase();
             }
             // determine next step
         }
