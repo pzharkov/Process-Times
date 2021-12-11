@@ -19,6 +19,5 @@ namespace Process_Times
             entry = _entry;
             label = _label;
         }
-
     }
 }

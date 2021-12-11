@@ -29,21 +29,19 @@ namespace Process_Times
         }
         public void AddEntry(float processTime, string product)
         {
-            string _command = "INSERT INTO Data_Table VALUES (1, " + processTime + ", '" + product + "')";
+            string _command = "INSERT INTO Data_Table (process_time, product_type) VALUES (" + processTime + ", '" + product + "')";
             ExecuteQuery(_command);
         }        
 
         private void TryToCreateTable()
         {
-                // create table
-                string _command = "CREATE TABLE IF NOT EXISTS Data_Table (id INTEGER PRIMARY KEY AUTOINCREMENT, process_time FLOAT(5,2), product_type VARCHAR(1))";
-                ExecuteQuery(_command);
+            string _command = "CREATE TABLE IF NOT EXISTS Data_Table (id INTEGER PRIMARY KEY AUTOINCREMENT, process_time FLOAT(5,2), product_type VARCHAR(1))";
+            ExecuteQuery(_command);
         }
 
         private void CreateConnection()
         {   
-            sqlConnection = new SQLiteConnection(string.Format("Data Source = {0};", filePath));
-            //sqlConnection.Open();
+            sqlConnection = new SQLiteConnection(string.Format("Data Source = {0};", filePath));            
             sqlCommand = sqlConnection.CreateCommand();
         }
 

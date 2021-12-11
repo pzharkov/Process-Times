@@ -16,20 +16,20 @@ using System.Windows.Shapes;
 namespace Process_Times
 {
     public partial class ManualEntryWindow : WindowBase
-    {
-        private string _product;
+    {        
         public ManualEntryWindow()
         {
             InitializeComponent();
         }        
         private void SubmitClick(object sender, RoutedEventArgs e)
         {
-            _product = null;
+            string _product = null;
 
             if (ProductListBox.SelectedItem != null)
             {
                 _product = ProductListBox.SelectedItem.ToString();
             }
+
 
             EntryInput processTime = new EntryInput(ProcessTimeTxtBox.Text, ProcessTimeLabel);
             EntryInput productSelected = new EntryInput(_product, ProductLabel);
