@@ -10,24 +10,51 @@ namespace Process_Times
     // This class is responsible for managing DB related functions.
     class DBManager
     {
-        private readonly string filePath = Environment.CurrentDirectory + "\\Database\\Database.db";
+        private readonly string filePath = Environment.CurrentDirectory + "\\Database.db";
 
+        SQLiteCommand sqlCommand;
+        SQLiteConnection sqlConnection;        
+
+        public void PrepareDatabase()
+        {           
+                if (!DatabaseExists())
+                {
+                    SQLiteConnection.CreateFile(filePath);
+                }
+                if (sqlConnection == null)
+                {
+                    CreateConnection();
+                }
+                TryToCreateTable();                
+        }
         public void AddEntry(float processTime, string product)
         {
+            string _command = "INSERT INTO Data_Table VALUES (1, " + processTime + ", '" + product + "')";
+            ExecuteQuery(_command);
+        }        
+
+        private void TryToCreateTable()
+        {
+                // create table
+                string _command = "CREATE TABLE IF NOT EXISTS Data_Table (id INTEGER PRIMARY KEY AUTOINCREMENT, process_time FLOAT(5,2), product_type VARCHAR(1))";
+                ExecuteQuery(_command);
         }
 
-        public void CreateDatabase()
+        private void CreateConnection()
+        {   
+            sqlConnection = new SQLiteConnection(string.Format("Data Source = {0};", filePath));
+            //sqlConnection.Open();
+            sqlCommand = sqlConnection.CreateCommand();
+        }
+
+        private void ExecuteQuery(string command)
         {
-            if (DatabaseExists())
-            {
-                //do nothing
-                System.Diagnostics.Debug.WriteLine("Database file already exists.");
-            }
-            else
-            {
-                // create database
-                SQLiteConnection.CreateFile(filePath);
-            }
+            sqlConnection.Open();
+            SQLiteCommand _command = sqlConnection.CreateCommand();
+            _command.CommandText = command;
+            _command.ExecuteNonQuery();
+            
+            sqlConnection.Close();           
         }
 
         private bool DatabaseExists()

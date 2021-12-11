@@ -73,11 +73,15 @@ namespace Process_Times
             bool _validProductSelected = IsNotNull(productSelected, "Missing selection.");
                         
             if (_validProcessTime && _validProductSelected)
-            {
+            {                
                 System.Diagnostics.Debug.WriteLine("Valid Entries. Proceed.");
                 
+                // Convert
+                float _processTime = float.Parse(processTime.entry);
+
                 // update DB
-                _dbManager.CreateDatabase();
+                _dbManager.PrepareDatabase();
+                _dbManager.AddEntry(_processTime, productSelected.entry);
             }
             // determine next step
         }
