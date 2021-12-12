@@ -13,10 +13,10 @@ namespace Process_Times
         private readonly string filePath = Environment.CurrentDirectory + "\\Database.db";
 
         SQLiteCommand sqlCommand;
-        SQLiteConnection sqlConnection;        
+        SQLiteConnection sqlConnection;
 
         public void PrepareDatabase()
-        {           
+        {
                 if (!DatabaseExists())
                 {
                     SQLiteConnection.CreateFile(filePath);
@@ -25,13 +25,16 @@ namespace Process_Times
                 {
                     CreateConnection();
                 }
-                TryToCreateTable();                
+
+                TryToCreateTable();
         }
         public void AddEntry(float processTime, string product)
         {
-            string _command = "INSERT INTO Data_Table (process_time, product_type) VALUES (" + processTime + ", '" + product + "')";
+            float _roundedProcessTime = (float)Math.Round(processTime, 2);
+
+            string _command = "INSERT INTO Data_Table (process_time, product_type) VALUES (" + _roundedProcessTime + ", '" + product + "')";
             ExecuteQuery(_command);
-        }        
+        }
 
         private void TryToCreateTable()
         {
@@ -40,8 +43,8 @@ namespace Process_Times
         }
 
         private void CreateConnection()
-        {   
-            sqlConnection = new SQLiteConnection(string.Format("Data Source = {0};", filePath));            
+        {
+            sqlConnection = new SQLiteConnection(string.Format("Data Source = {0};", filePath));
             sqlCommand = sqlConnection.CreateCommand();
         }
 
@@ -52,7 +55,7 @@ namespace Process_Times
             _command.CommandText = command;
             _command.ExecuteNonQuery();
             
-            sqlConnection.Close();           
+            sqlConnection.Close();
         }
 
         private bool DatabaseExists()

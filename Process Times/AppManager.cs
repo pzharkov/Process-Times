@@ -83,7 +83,6 @@ namespace Process_Times
                 _dbManager.PrepareDatabase();
                 _dbManager.AddEntry(_processTime, productSelected.entry);
             }
-            // determine next step
         }
 
         public void SubmitGenerateDataSet(GenerateDataSetWindow generateDataSetWindow, EntryInput numberOfEntries, RangeInput rangeA, RangeInput rangeB)
@@ -108,6 +107,9 @@ namespace Process_Times
                                 
                 ValidRange[] _products = { _rangeA, _rangeB };
 
+                // check DB, table, connection exist and create if needed
+                _dbManager.PrepareDatabase();
+
                 // for each entry, randomize product type and process time based on product ranges
                 for (int i = 0; i < _numberOfEntries; i++)
                 {
@@ -115,6 +117,10 @@ namespace Process_Times
                     int _product = Convert.ToInt32(random.NextDouble());
 
                     float _processTime = GenerateRandomFloat(_products[_product].min, _products[_product].max);
+
+                    string _productName(int _productIndex) => _productIndex == 0 ? "A" : "B";
+
+                    _dbManager.AddEntry(_processTime, _productName(_product));
                     System.Diagnostics.Debug.WriteLine("Randomized process time: " + _processTime);
                 }
             }

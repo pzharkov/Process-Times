@@ -27,7 +27,7 @@ namespace Process_Times
 
             if (ProductListBox.SelectedItem != null)
             {
-                _product = ProductListBox.SelectedItem.ToString();
+                _product = (ProductListBox.SelectedItem as ListBoxItem).Content.ToString();
             }
 
 
