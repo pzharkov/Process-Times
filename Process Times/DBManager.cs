@@ -62,5 +62,53 @@ namespace Process_Times
         {
             return System.IO.File.Exists(filePath);
         }
+
+        public SummaryStats GetSummary()
+        {
+            SummaryStats _stats = new SummaryStats(CountEntries("A"), CountEntries("B"), CountEntries(null), CalculateAverage("A"), CalculateAverage("B"), CalculateAverage(null));
+            return _stats;
+        }
+        private int CountEntries(string product)
+        {
+            sqlConnection.Open();
+            
+            SQLiteCommand _command = sqlConnection.CreateCommand();
+
+            if (product == null)
+            {
+                _command.CommandText = "SELECT COUNT(id) FROM Data_Table";
+            }
+            else
+            {
+                _command.CommandText = "SELECT COUNT(id) FROM Data_Table WHERE product_type = '" + product + "'";
+            }
+
+            int _count = Convert.ToInt32(_command.ExecuteScalar());
+                        
+            sqlConnection.Close();
+            return _count;
+        }
+
+        private float CalculateAverage(string product)
+        {
+            sqlConnection.Open();
+
+            SQLiteCommand _command = sqlConnection.CreateCommand();
+
+            if (product == null)
+            {
+                _command.CommandText = "SELECT AVG(process_time) FROM Data_Table";
+            }
+            else
+            {
+                _command.CommandText = "SELECT AVG(process_time) FROM Data_Table WHERE product_type = '" + product + "'";
+            }
+            double _result = Convert.ToDouble(_command.ExecuteScalar());
+
+            float _average = (float)_result;
+
+            sqlConnection.Close();
+            return _average;
+        }
     }
 }

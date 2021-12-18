@@ -30,12 +30,17 @@
         </Grid.RowDefinitions>
         <Button Content="MAIN WINDOW" Click="MainWindowClick" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="70" Grid.Row="6" VerticalAlignment="Center" Width="250" FontSize="24"/>
         <Button Content="BACK" Click="Back" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="70" Grid.Row="8" VerticalAlignment="Center" Width="250" FontSize="24"/>
-        <DataGrid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="4">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Shift" Width="1*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Count" Width="1*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Average" Width="1*"></DataGridTextColumn>                
-            </DataGrid.Columns>            
-        </DataGrid>
+        <Label Content="PRODUCT" Grid.Column="1" HorizontalAlignment="Center" Height="45" Grid.Row="1" VerticalAlignment="Center" Width="85" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Label Content="A" HorizontalAlignment="Center" Height="45" VerticalAlignment="Center" Width="85" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1" Grid.Row="2"/>
+        <Label Content="B" HorizontalAlignment="Center" Height="45" VerticalAlignment="Center" Width="85" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="3" Grid.Column="1"/>
+        <Label Content="TOTAL" HorizontalAlignment="Center" Height="45" VerticalAlignment="Center" Width="85" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="4" Grid.Column="1"/>
+        <Label Content="COUNT" HorizontalAlignment="Center" Height="45" VerticalAlignment="Center" Width="84" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="2" Grid.Row="1"/>
+        <Label Name="Count_A" Content="" HorizontalAlignment="Center" Height="45" VerticalAlignment="Center" Width="84" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="2" Grid.Column="2"/>
+        <Label Name="Count_B" Content="" HorizontalAlignment="Center" Height="45" VerticalAlignment="Center" Width="84" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="3" Grid.Column="2"/>
+        <Label Name="Count_Total" Content="" HorizontalAlignment="Center" Height="45" VerticalAlignment="Center" Width="84" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="4" Grid.Column="2"/>
+        <Label Content="AVERAGE TIME" HorizontalAlignment="Center" Height="45" VerticalAlignment="Center" Width="84" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="3" Grid.Row="1"/>
+        <Label Name="Average_A" Content="" HorizontalAlignment="Center" Height="45" VerticalAlignment="Center" Width="84" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="2" Grid.Column="3"/>
+        <Label Name="Average_B" Content="" HorizontalAlignment="Center" Height="45" VerticalAlignment="Center" Width="84" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="3" Grid.Column="3"/>
+        <Label Name ="Average_Total" Content="" HorizontalAlignment="Center" Height="45" VerticalAlignment="Center" Width="84" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="4" Grid.Column="3"/>
     </Grid>
 </local:WindowBase>

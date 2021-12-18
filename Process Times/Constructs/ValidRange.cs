@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Process_Times.Constructs
+namespace Process_Times
 {
     public class ValidRange
     {

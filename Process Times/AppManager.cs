@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.ComponentModel;
 using System.Windows.Controls;
-using Process_Times.Constructs;
 
 namespace Process_Times
 {
@@ -56,6 +55,7 @@ namespace Process_Times
         {
             SummaryWindow newWindow = new();
             OpenNewWindow(newWindow, owner);
+            newWindow.UpdateSummary(_dbManager.GetSummary());
         }
         public void ViewData(WindowBase owner)
         {
@@ -105,10 +105,7 @@ namespace Process_Times
                 ValidRange _rangeA = new ValidRange(float.Parse(rangeA.min), float.Parse(rangeA.max));
                 ValidRange _rangeB = new ValidRange(float.Parse(rangeB.min), float.Parse(rangeB.max));
                                 
-                ValidRange[] _products = { _rangeA, _rangeB };
-
-                // check DB, table, connection exist and create if needed
-                _dbManager.PrepareDatabase();
+                ValidRange[] _products = { _rangeA, _rangeB };                
 
                 // for each entry, randomize product type and process time based on product ranges
                 for (int i = 0; i < _numberOfEntries; i++)
@@ -256,6 +253,11 @@ namespace Process_Times
             double _randomFloat = random.NextDouble() * (max - min) + min;
 
             return (float)_randomFloat;
+        }
+        public void Initialization()
+        {
+            // check DB, table, connection exist and create if needed
+            _dbManager.PrepareDatabase();
         }
     }
 }

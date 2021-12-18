@@ -24,6 +24,7 @@ namespace Process_Times
         {
             InitializeComponent();
             appManager = new AppManager();
+            appManager.Initialization();
         }
 
         private void EnterData(object sender, RoutedEventArgs e)
