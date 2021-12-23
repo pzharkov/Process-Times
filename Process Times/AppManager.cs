@@ -82,6 +82,13 @@ namespace Process_Times
                 // update DB
                 _dbManager.PrepareDatabase();
                 _dbManager.AddEntry(_processTime, productSelected.entry);
+
+                // notification
+                _notifications.SuccessMessage("Record added.");
+
+                // close
+                manualEntryWindow.okToClose = true;
+                manualEntryWindow.Close();
             }
         }
 
@@ -121,7 +128,13 @@ namespace Process_Times
                     System.Diagnostics.Debug.WriteLine("Randomized process time: " + _processTime);
                 }
             }
-            // determine next step
+            // notification
+            _notifications.SuccessMessage("Record added.");
+
+            // close
+            generateDataSetWindow.okToClose = true;
+            generateDataSetWindow.Close();
+
         }
         #endregion
         

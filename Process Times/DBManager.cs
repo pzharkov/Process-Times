@@ -105,7 +105,7 @@ namespace Process_Times
             }
             double _result = Convert.ToDouble(_command.ExecuteScalar());
 
-            float _average = (float)_result;
+            float _average = (float)Math.Round(_result, 1);
 
             sqlConnection.Close();
             return _average;

@@ -12,8 +12,9 @@ namespace Process_Times
     {
         // This class communicates results back to the user: success, error, etc.
 
-        public void SuccessMessage()
+        public void SuccessMessage(string message)
         {
+            MessageBox.Show(message, "Success!");
         }
         public void ErrorMessage()
         {

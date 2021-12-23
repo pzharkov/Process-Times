@@ -14,9 +14,12 @@ namespace Process_Times
     {
         private AppManager _appManager;
         private WindowBase _parentWindow;
+        private bool _okToClose;
 
         public AppManager appManager { get => _appManager; set => _appManager = value; }
         public WindowBase parentWindow { get => _parentWindow; set => _parentWindow = value; }
+
+        public bool okToClose { get => _okToClose; set => _okToClose = value; }
 
         public void Window_Closing(object sender, CancelEventArgs e)
         {
@@ -27,13 +30,12 @@ namespace Process_Times
             Close();
         }
 
-
         public void TryToClose(System.ComponentModel.CancelEventArgs closingEvent)
         {
             // search active window for text boxes and list boxes
             // check if any are not blank, request confirmation if found any
             // close if confirmed or cancel closing event if not
-            if (AllBlank())
+            if (AllBlank() || _okToClose)
             {
                 CloseWindow();
             }
