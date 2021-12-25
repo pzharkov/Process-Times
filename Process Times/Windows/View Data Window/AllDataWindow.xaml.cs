@@ -32,6 +32,9 @@ namespace Process_Times
             AllDataGrid.Columns[0].Header = "ID";
             AllDataGrid.Columns[1].Header = "Product";
             AllDataGrid.Columns[2].Header = "Process Time";
+            AllDataGrid.Columns[0].Width = 40;
+            AllDataGrid.Columns[1].Width = 60;
+            AllDataGrid.Columns[2].Width = 120;
         }
     }
 }
