@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
+using System.Data;
+using System.Windows.Controls;
 
 namespace Process_Times
 {
@@ -17,28 +19,28 @@ namespace Process_Times
 
         public void PrepareDatabase()
         {
-                if (!DatabaseExists())
-                {
-                    SQLiteConnection.CreateFile(filePath);
-                }
-                if (sqlConnection == null)
-                {
-                    CreateConnection();
-                }
-
-                TryToCreateTable();
+            if (!DatabaseExists())
+            {
+                SQLiteConnection.CreateFile(filePath);
+            }
+            if (sqlConnection == null)
+            {
+                CreateConnection();
+            }
+            
+            TryToCreateTable();
         }
         public void AddEntry(float processTime, string product)
         {
             float _roundedProcessTime = (float)Math.Round(processTime, 2);
 
-            string _command = "INSERT INTO Data_Table (process_time, product_type) VALUES (" + _roundedProcessTime + ", '" + product + "')";
+            string _command = "INSERT INTO Data_Table (product_type, process_time) VALUES ('" + product + "', " + _roundedProcessTime + ")";
             ExecuteQuery(_command);
         }
 
         private void TryToCreateTable()
         {
-            string _command = "CREATE TABLE IF NOT EXISTS Data_Table (id INTEGER PRIMARY KEY AUTOINCREMENT, process_time FLOAT(5,2), product_type VARCHAR(1))";
+            string _command = "CREATE TABLE IF NOT EXISTS Data_Table (id INTEGER PRIMARY KEY AUTOINCREMENT, product_type VARCHAR(1), process_time FLOAT(5,2))";
             ExecuteQuery(_command);
         }
 
@@ -110,5 +112,25 @@ namespace Process_Times
             sqlConnection.Close();
             return _average;
         }
+
+        public void LoadAllData(DataGrid dataGrid)
+        {
+            sqlConnection.Open();
+
+            string _commandText = "SELECT * FROM Data_Table";
+
+            SQLiteCommand _command = sqlConnection.CreateCommand();
+            _command.CommandText = _commandText;
+
+            SQLiteDataAdapter _adapter = new SQLiteDataAdapter(_command);
+            DataTable _dataTable = new DataTable("Data_Table");
+
+            _adapter.Fill(_dataTable);
+
+            dataGrid.ItemsSource = _dataTable.DefaultView;
+
+            sqlConnection.Close();
+        }
+
     }
 }

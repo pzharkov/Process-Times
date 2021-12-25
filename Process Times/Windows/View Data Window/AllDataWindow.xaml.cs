@@ -16,13 +16,22 @@ namespace Process_Times
 {
     public partial class AllDataWindow : WindowBase
     {
+        public readonly DataGrid dataGrid;
         public AllDataWindow()
         {
             InitializeComponent();
+
+            dataGrid = AllDataGrid;
         }
         private void MainWindowClick(object sender, RoutedEventArgs e)
         {
             ReturnToMainWindow();
+        }
+        public void UpdateHeaders()
+        {
+            AllDataGrid.Columns[0].Header = "ID";
+            AllDataGrid.Columns[1].Header = "Product";
+            AllDataGrid.Columns[2].Header = "Process Time";
         }
     }
 }

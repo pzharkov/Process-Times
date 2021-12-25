@@ -35,6 +35,9 @@ namespace Process_Times
         {
             AllDataWindow newWindow = new();
             OpenNewWindow(newWindow, owner);
+
+            _dbManager.LoadAllData(newWindow.dataGrid);
+            newWindow.UpdateHeaders();
         }
         public void EnterData(WindowBase owner)
         {
@@ -73,7 +76,7 @@ namespace Process_Times
             bool _validProductSelected = IsNotNull(productSelected, "Missing selection.");
                         
             if (_validProcessTime && _validProductSelected)
-            {                
+            {
                 System.Diagnostics.Debug.WriteLine("Valid Entries. Proceed.");
                 
                 // Convert
@@ -83,12 +86,7 @@ namespace Process_Times
                 _dbManager.PrepareDatabase();
                 _dbManager.AddEntry(_processTime, productSelected.entry);
 
-                // notification
-                _notifications.SuccessMessage("Record added.");
-
-                // close
-                manualEntryWindow.okToClose = true;
-                manualEntryWindow.Close();
+                SuccessfulEntryNotification(manualEntryWindow);
             }
         }
 
@@ -112,7 +110,7 @@ namespace Process_Times
                 ValidRange _rangeA = new ValidRange(float.Parse(rangeA.min), float.Parse(rangeA.max));
                 ValidRange _rangeB = new ValidRange(float.Parse(rangeB.min), float.Parse(rangeB.max));
                                 
-                ValidRange[] _products = { _rangeA, _rangeB };                
+                ValidRange[] _products = { _rangeA, _rangeB};
 
                 // for each entry, randomize product type and process time based on product ranges
                 for (int i = 0; i < _numberOfEntries; i++)
@@ -128,13 +126,8 @@ namespace Process_Times
                     System.Diagnostics.Debug.WriteLine("Randomized process time: " + _processTime);
                 }
             }
-            // notification
-            _notifications.SuccessMessage("Record added.");
 
-            // close
-            generateDataSetWindow.okToClose = true;
-            generateDataSetWindow.Close();
-
+            SuccessfulEntryNotification(generateDataSetWindow);
         }
         #endregion
         
@@ -146,6 +139,16 @@ namespace Process_Times
         public bool ConfirmClose(WindowBase window)
         {
             return (_notifications.ConfirmCloseWindow(window.Title));
+        }
+
+        private void SuccessfulEntryNotification(WindowBase window)
+        {
+            // notification
+            _notifications.SuccessMessage("Record added.");
+
+            // close
+            window.okToClose = true;
+            window.Close();
         }
         #endregion
 

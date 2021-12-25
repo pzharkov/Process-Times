@@ -5,15 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Process_Times"
         mc:Ignorable="d"
-        Title="AllDataWindow" Height="450" Width="800"
+        Title="AllDataWindow" Height="450" Width="400"
         WindowStartupLocation="CenterOwner"
                   Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="41*"/>
-            <ColumnDefinition Width="259*"/>
-            <ColumnDefinition Width="439*"/>
-            <ColumnDefinition Width="61*"/>
+            <ColumnDefinition Width="21*"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="31*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
@@ -29,12 +28,7 @@
         </Grid.RowDefinitions>
         <Button Content="MAIN WINDOW" Click="MainWindowClick" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="6" VerticalAlignment="Center" Width="250" FontSize="24"/>
         <Button Content="BACK" Click="Back" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="8" VerticalAlignment="Center" Width="250" FontSize="24"/>
-        <DataGrid Grid.Column="2" Grid.Row="1" Grid.RowSpan="8" Margin="10,10,10,10">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Order Nmber" Width="1*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Process Time" Width="1*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Shift" Width="1*"></DataGridTextColumn>
-            </DataGrid.Columns>
+        <DataGrid Name="AllDataGrid" AutoGenerateColumns="True" ColumnWidth="Auto" Grid.Column="1" Margin="6,22,10,10" Grid.RowSpan="5">
         </DataGrid>
     </Grid>
 </local:WindowBase>
