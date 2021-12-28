@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Process_Times"
         mc:Ignorable="d"
-        Title="Generate Data Set Window" Height="650" Width="800"
+        Title="Generate Data Set Window" Height="650" Width="800" ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
                   Closing="Window_Closing">
     <Grid>

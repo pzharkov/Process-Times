@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Process_Times"
         mc:Ignorable="d"
-        Title="AllDataWindow" Height="450" Width="400"
+        Title="AllDataWindow" Height="450" Width="400" ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
                   Closing="Window_Closing">
     <Grid>

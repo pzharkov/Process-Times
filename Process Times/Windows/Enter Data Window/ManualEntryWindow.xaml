@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Process_Times"
         mc:Ignorable="d"
-        Title="ManualEntryWindow" Height="450" Width="400"
+        Title="ManualEntryWindow" Height="450" Width="400" ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
                   Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="0.1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
