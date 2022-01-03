@@ -25,8 +25,8 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Button Content="MAIN WINDOW" Click="MainWindowClick" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="5" VerticalAlignment="Center" Width="250" FontSize="24"/>
-        <Button Content="BACK" Click="Back" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="7" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="MAIN WINDOW" Click="MainWindowClick" Grid.Column="1" HorizontalAlignment="Center" Height="65" Grid.Row="5" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="BACK" Click="Back" Grid.Column="1" HorizontalAlignment="Center" Height="65" Grid.Row="7" VerticalAlignment="Center" Width="250" FontSize="24"/>
         <DataGrid Name="AllDataGrid" AutoGenerateColumns="True" ColumnWidth="Auto" Grid.Column="1" Grid.Row="1" Margin="35,10,35,10" Grid.RowSpan="4">
         </DataGrid>
     </Grid>

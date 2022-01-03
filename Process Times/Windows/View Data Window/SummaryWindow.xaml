@@ -28,8 +28,8 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Button Content="MAIN WINDOW" Click="MainWindowClick" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="70" Grid.Row="6" VerticalAlignment="Center" Width="250" FontSize="24"/>
-        <Button Content="BACK" Click="Back" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="70" Grid.Row="8" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="MAIN WINDOW" Click="MainWindowClick" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="65" Grid.Row="6" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="BACK" Click="Back" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" Height="65" Grid.Row="8" VerticalAlignment="Center" Width="250" FontSize="24"/>
         <Label Content="PRODUCT" Grid.Column="1" HorizontalAlignment="Center" Height="45" Grid.Row="1" VerticalAlignment="Center" Width="85" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         <Label Content="A" HorizontalAlignment="Center" Height="45" VerticalAlignment="Center" Width="85" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1" Grid.Row="2"/>
         <Label Content="B" HorizontalAlignment="Center" Height="45" VerticalAlignment="Center" Width="85" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="3" Grid.Column="1"/>

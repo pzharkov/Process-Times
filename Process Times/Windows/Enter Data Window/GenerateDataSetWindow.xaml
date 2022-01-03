@@ -33,7 +33,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Label Name="NumberOfEntriesStaticLabel" Content="NUMBER OF ENTRIES" Grid.Column="1" HorizontalAlignment="Left" Height="58" Grid.Row="1" VerticalAlignment="Center" Width="230" FontSize="20" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
-        <TextBox Name="NumberOfEntriesTextBox" Grid.Column="3" HorizontalAlignment="Center" Height="40" TextWrapping="Wrap" VerticalAlignment="Center" Width="92" Grid.Row="1" FontSize="20"/>
+        <TextBox Name="NumberOfEntriesTextBox" Grid.Column="3" VerticalContentAlignment="CENTER" HorizontalContentAlignment="CENTER" HorizontalAlignment="Center" Height="40" TextWrapping="Wrap" VerticalAlignment="Center" Width="92" Grid.Row="1" FontSize="20"/>
         <Label Name="NumberOfEntriesLabel" Content="" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="4" HorizontalAlignment="Center" Height="57" Grid.Row="1" VerticalAlignment="Center" Width="220" FontSize="12"/>
 
         <Label Name="ProductALimits" Content="PRODUCT A" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Height="58" Width="137" FontSize="20" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Margin="76,0,0,0"/>
@@ -56,7 +56,7 @@
         <TextBox Name="MaxBTextBox" Grid.Column="3" VerticalContentAlignment="CENTER" HorizontalContentAlignment="CENTER" HorizontalAlignment="Center" Height="40" TextWrapping="Wrap" VerticalAlignment="Center" Width="92" Grid.Row="9" FontSize="16"/>
         <Label Name="MaxBLabel" Content="" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="4" HorizontalAlignment="Center" Height="57" Grid.Row="9" VerticalAlignment="Center" Width="220" FontSize="12"/>
 
-        <Button Content="SUBMIT" Click="SubmitClick" HorizontalAlignment="Left" Height="70" Grid.Row="11" VerticalAlignment="Center" Width="250" FontSize="24" Grid.ColumnSpan="3" Margin="70,0,0,0"/>
-        <Button Content="CANCEL" Click="Back" Grid.Column="4" HorizontalAlignment="Center" Height="70" Grid.Row="11" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="SUBMIT" Click="SubmitClick" HorizontalAlignment="Left" Height="65" Grid.Row="11" VerticalAlignment="Center" Width="250" FontSize="24" Grid.ColumnSpan="3" Margin="70,0,0,0"/>
+        <Button Content="CANCEL" Click="Back" Grid.Column="4" HorizontalAlignment="Center" Height="65" Grid.Row="11" VerticalAlignment="Center" Width="250" FontSize="24"/>
     </Grid>
 </local:WindowBase>

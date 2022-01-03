@@ -22,8 +22,8 @@
             <RowDefinition Height="4*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <Button Content="MANUAL ENTRY" Click="ManualEntryClick" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="1" VerticalAlignment="Center" Width="250" FontSize="24"/>
-        <Button Content="GENERATE DATA SET" Click="GenerateDataSetClick" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="3" VerticalAlignment="Center" Width="250" FontSize="24"/>
-        <Button Content="BACK" Click="Back" Grid.Column="1" HorizontalAlignment="Center" Height="70" Grid.Row="5" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="MANUAL ENTRY" Click="ManualEntryClick" Grid.Column="1" HorizontalAlignment="Center" Height="65" Grid.Row="1" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="GENERATE DATA SET" Click="GenerateDataSetClick" Grid.Column="1" HorizontalAlignment="Center" Height="65" Grid.Row="3" VerticalAlignment="Center" Width="250" FontSize="24"/>
+        <Button Content="BACK" Click="Back" Grid.Column="1" HorizontalAlignment="Center" Height="65" Grid.Row="5" VerticalAlignment="Center" Width="250" FontSize="24"/>
     </Grid>
 </local:WindowBase>
