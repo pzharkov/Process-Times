@@ -26,7 +26,7 @@ namespace Process_Times
         public bool IsValidInt(string validInt)
         {
             // try to parse as int32 and see if positive
-            if (Int32.TryParse(validInt, out _validInt) && Int32.Parse(validInt) > 0)
+            if (Int32.TryParse(validInt, out _validInt) && Int32.Parse(validInt) > 0 && Int32.Parse(validInt) < 10000)
             {
                 return true;
             }
@@ -39,7 +39,7 @@ namespace Process_Times
         public bool IsValidFloat(string validFloat)
         {
             // try to parse as double and see if positive number
-            if (float.TryParse(validFloat, out _validFloat) && float.Parse(validFloat) > 0f)
+            if (float.TryParse(validFloat, out _validFloat) && float.Parse(validFloat) > 0f && float.Parse(validFloat) < 10000f)
             {
                 return true;
             }

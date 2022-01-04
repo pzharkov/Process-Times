@@ -72,7 +72,7 @@ namespace Process_Times
         {   
             // validate
 
-            bool _validProcessTime = IsValidFloat(processTime, "Only use positive decimal numbers.");
+            bool _validProcessTime = IsValidFloat(processTime, "Only use positive decimal numbers < 10,000.");
             bool _validProductSelected = IsNotNull(productSelected, "Missing selection.");
                         
             if (_validProcessTime && _validProductSelected)
@@ -93,7 +93,7 @@ namespace Process_Times
         public void SubmitGenerateDataSet(GenerateDataSetWindow generateDataSetWindow, EntryInput numberOfEntries, RangeInput rangeA, RangeInput rangeB)
         {
             // validate
-            bool _validNumberOfEntries = IsValidInt(numberOfEntries, "Only use positive integers.");
+            bool _validNumberOfEntries = IsValidInt(numberOfEntries, "Only use positive integers < 10,000.");
             bool _validRangeA = IsValidRange(rangeA);
             bool _validRangeB = IsValidRange(rangeB);
 
@@ -109,8 +109,8 @@ namespace Process_Times
 
                 ValidRange _rangeA = new ValidRange(float.Parse(rangeA.min), float.Parse(rangeA.max));
                 ValidRange _rangeB = new ValidRange(float.Parse(rangeB.min), float.Parse(rangeB.max));
-                                
-                ValidRange[] _products = { _rangeA, _rangeB};
+
+                ValidRange[] _products = { _rangeA, _rangeB };
 
                 // for each entry, randomize product type and process time based on product ranges
                 for (int i = 0; i < _numberOfEntries; i++)
@@ -125,9 +125,10 @@ namespace Process_Times
                     _dbManager.AddEntry(_processTime, _productName(_product));
                     System.Diagnostics.Debug.WriteLine("Randomized process time: " + _processTime);
                 }
+
+                SuccessfulEntryNotification(generateDataSetWindow);
             }
 
-            SuccessfulEntryNotification(generateDataSetWindow);
         }
         #endregion
         
@@ -178,7 +179,7 @@ namespace Process_Times
             }
             else
             {
-                InvalidEntry(entry.label, invalidMessage);                
+                InvalidEntry(entry.label, invalidMessage);
             }
 
             return _isValid;
