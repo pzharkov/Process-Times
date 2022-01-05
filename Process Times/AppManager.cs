@@ -139,7 +139,7 @@ namespace Process_Times
         }
         public bool ConfirmClose(WindowBase window)
         {
-            return (_notifications.ConfirmCloseWindow(window.Title));
+            return _notifications.ConfirmCloseWindow(window.Title);
         }
 
         private void SuccessfulEntryNotification(WindowBase window)

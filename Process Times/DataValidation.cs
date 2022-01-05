@@ -13,20 +13,14 @@ namespace Process_Times
   
         public bool ValidProductSelected(string product)
         {
-            if (product != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return product == null ? false : true;
         }
         
         public bool IsValidInt(string validInt)
         {
-            // try to parse as int32 and see if positive
-            if (Int32.TryParse(validInt, out _validInt) && Int32.Parse(validInt) > 0 && Int32.Parse(validInt) < 10000)
+            // if can't parse as int, negative or too large > 9999, return false, else true
+            
+            if (int.TryParse(validInt, out _validInt) && int.Parse(validInt) > 0 && int.Parse(validInt) < 10000)
             {
                 return true;
             }
