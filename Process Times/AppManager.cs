@@ -72,7 +72,7 @@ namespace Process_Times
         {   
             // validate
 
-            bool _validProcessTime = IsValidFloat(processTime, "Only use positive decimal numbers < 10,000.");
+            bool _validProcessTime = IsValidFloat(processTime, "Only use positive numbers < 10,000.");
             bool _validProductSelected = IsNotNull(productSelected, "Missing selection.");
                         
             if (_validProcessTime && _validProductSelected)
@@ -164,7 +164,7 @@ namespace Process_Times
             }
             else
             {
-                InvalidEntry(entry.label, invalidMessage);                
+                InvalidEntry(entry.label, invalidMessage);
             }
 
             return _isValid;
@@ -199,7 +199,7 @@ namespace Process_Times
             }
             else
             {
-                InvalidEntry(range.minLabel, "Only use positive decimal numbers.");
+                InvalidEntry(range.minLabel, "Only use positive numbers < 10,000.");
             }
 
             // check max
@@ -210,7 +210,7 @@ namespace Process_Times
             }
             else
             {
-                InvalidEntry(range.maxLabel, "Only use positive decimal numbers.");
+                InvalidEntry(range.maxLabel, "Only use positive numbers < 10,000.");
             }
 
             // check min < max ONLY if both are valid doubles
