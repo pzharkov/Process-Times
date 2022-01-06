@@ -1,0 +1,27 @@
+﻿<local:WindowBase x:Class="Process_Times.ShowAppStructureWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Process_Times"
+        mc:Ignorable="d"
+        Title="App Structure" Height="650" Width="800" ResizeMode="NoResize"
+                  Closing="Window_Closing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Button Content="MAIN WINDOW" Click="MainWindowClick" Grid.Column="1" HorizontalAlignment="Center" Height="65" Grid.Row="2" VerticalAlignment="Top" Width="250" FontSize="24" Margin="0,6,0,0"/>
+        <Button Content="BACK" Click="Back" Grid.Column="2" HorizontalAlignment="Center" Height="65" Grid.Row="2" VerticalAlignment="Top" Width="250" FontSize="24" Margin="0,6,0,0"/>
+        <Image HorizontalAlignment="Left" Height="437" Margin="10,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="724" Source="/Resources/AppStructureDiagram.png" Grid.Column="1" Grid.ColumnSpan="3"/>
+    </Grid>
+</local:WindowBase>

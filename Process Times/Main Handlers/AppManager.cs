@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.ComponentModel;
 using System.Windows.Controls;
 
 namespace Process_Times
@@ -53,6 +47,12 @@ namespace Process_Times
         {
             ManualEntryWindow _newWindow = new();
             OpenNewWindow(_newWindow, owner);
+        }
+
+        public void ShowDiagram(WindowBase owner)
+        {
+            ShowAppStructureWindow newWindow = new();
+            OpenNewWindow(newWindow, owner);
         }
         public void Summary(WindowBase owner)
         {

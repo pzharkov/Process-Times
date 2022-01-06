@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Data;
 using System.Windows.Controls;
@@ -105,7 +101,12 @@ namespace Process_Times
             {
                 _command.CommandText = "SELECT AVG(process_time) FROM Data_Table WHERE product_type = '" + product + "'";
             }
-            double _result = Convert.ToDouble(_command.ExecuteScalar());
+            double _result = 0;
+
+            if (_command.ExecuteScalar() != DBNull.Value)
+            {
+                _result = Convert.ToDouble(_command.ExecuteScalar());
+            }
 
             float _average = (float)Math.Round(_result, 1);
 
