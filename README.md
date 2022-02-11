@@ -1,4 +1,5 @@
 # Process Times
+(To run, launch .exe file in Process Times/Builds folder.)
 
 A NET WPF program to store and pull data from a local SQLite database.
 
